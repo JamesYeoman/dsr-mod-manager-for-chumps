@@ -57,10 +57,12 @@ For these bits of metadata, here's a snippet
 name = "Better Rolling"
 version = "x.y.z"
 author = "Hocter"
-url.mod = "https://www.nexusmods.com/darksoulsremastered/mods/193"
-# url.source = <link to source>
 description = '''
 This mod aims to improve rollin in DSR to make it slighlty more in line with later entries into the series. Its incredibly difficult to maintain a fast-roll in DS1 without the use of Havel's Ring ad the FAP Ring which I find limits build variety and creativity...'''
+
+[metadata.url]
+mod = "https://www.nexusmods.com/darksoulsremastered/mods/193"
+# source = <link to source>
 ```
 
 Any file in the mod folder that _isn't_ specified in the `mod.toml` file will be ignored. Feel free to use this behaviour to bundle documentation, screenshots, and other niceties.

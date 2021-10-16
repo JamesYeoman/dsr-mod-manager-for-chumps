@@ -1,0 +1,20 @@
+[metadata]
+name = "Display Soul Values"
+version = "1.0"
+author = "Dziggy"
+description = '''
+This is a simple mod that allows you to see how many souls you will receive from consumable soul-giving items.
+
+There are two variations of the mod: icons and text.
+The icons edition of the mod will display the soul value at the top of the item's icon image.
+The text edition of the mod will display the soul value in parentheses after the item's name (works for all of the game's supported languages).
+
+Note: Boss soul amounts are only shown if you install the text version of the mod;
+they will not have their values displayed on the icon images because many of the boss souls use the same icon but give different amounts of souls.
+'''
+
+[metadata.url]
+mod = "https://www.nexusmods.com/darksoulsremastered/mods/6"
+
+[[yabber.file.menu.menu_0-tpf-dcx]]
+path = "Icon20.dds"
