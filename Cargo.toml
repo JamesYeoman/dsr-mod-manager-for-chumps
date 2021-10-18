@@ -1,5 +1,5 @@
 [package]
-name = "dsr-mod-manager-for-chumps"
+name = "dsr_mod_manager"
 version = "0.1.0"
 edition = "2018"
 repository = "https://github.com/JamesYeoman/dsr-mod-manager-for-chumps"
@@ -10,4 +10,4 @@ licence-file = "LICENSE"
 [dependencies]
 fltk = { version = "^1.2", features = ["fltk-bundled"] }
 toml = "*"
-bitcoin_hashes = "*"
+sha256 = "*"

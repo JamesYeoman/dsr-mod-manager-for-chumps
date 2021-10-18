@@ -5,10 +5,15 @@ The JVM in general is a bad idea for a mod manager that will need to be running 
 
 Besides, I doubt people will be willing to adopt a mod manager that runs on the JVM.
 
-## Outcome + Rationale
-I've decided on [FLTK-RS](https://github.com/fltk-rs/fltk-rs)
- - it's currently in active development
- - is [explicitly cross-platform](https://github.com/fltk-rs/fltk-rs#dependencies)
- - is [lightweight](https://github.com/fltk-rs/fltk-rs#:~:text=Speed.%20Fast%20to%20install%2C%20fast%20to%20build%2C%20fast%20at%20startup%20and%20fast%20at%20runtime.) (both in terms of performance and executable size)
- - appears to be very stable (this is based on the fact that there are very few open issues, many closed issues, and the major version number isn't 0).
- 
+## ~~Outcome + Rationale~~
+~~I've decided on~~ [~~FLTK-RS~~](https://github.com/fltk-rs/fltk-rs)
+ - ~~it's currently in active development~~
+ - ~~is~~ [~~explicitly cross-platform~~](https://github.com/fltk-rs/fltk-rs#dependencies)
+ - ~~is~~ [~~lightweight~~](https://github.com/fltk-rs/fltk-rs#:~:text=Speed.%20Fast%20to%20install%2C%20fast%20to%20build%2C%20fast%20at%20startup%20and%20fast%20at%20runtime.) ~~(both in terms of performance and executable size)~~
+ - ~~appears to be very stable (this is based on the fact that there are very few open issues, many closed issues, and the major version number isn't 0).~~
+
+Ok, so FLTK-RS achieves most of the functionality by using macros.
+
+This is all well and good, but when neither VSCode nor Intellij IDEA can provide completions for `Window::default()`...
+
+I'm going to have to start from scratch, because I can't go developing like this...
