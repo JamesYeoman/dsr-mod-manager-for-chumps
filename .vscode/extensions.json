@@ -1,11 +1,19 @@
 {
-    "recommendations": [
-        "rust-lang.rust",
-        "visualstudioexptteam.vscodeintellicode",
-        "eamodio.gitlens",
-        "aaron-bond.better-comments",
-        "bungcip.better-toml",
-        "gaplo917.gapstylevs",
-        "pkief.material-icon-theme"
-    ]
+  "recommendations": [
+    "rust-lang.rust",
+    "visualstudioexptteam.vscodeintellicode",
+    "eamodio.gitlens",
+    "aaron-bond.better-comments",
+    "bungcip.better-toml",
+    "gaplo917.gapstylevs",
+    "pkief.material-icon-theme",
+    "dbaeumer.vscode-eslint",
+    "eg2.vscode-npm-script",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "syler.sass-indented",
+    "pmneo.tsimporter",
+    "mgmcdermott.vscode-language-babel",
+    "coenraads.bracket-pair-colorizer-2"
+  ]
 }

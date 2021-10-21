@@ -1,0 +1,5 @@
+@import '../utils/borders.css';
+
+.item-card {
+  @apply text-2xl text-center rounded shadow h-10 overflow-ellipsis whitespace-nowrap overflow-hidden;
+}

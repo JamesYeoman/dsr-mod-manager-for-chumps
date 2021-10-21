@@ -1,0 +1,11 @@
+@import './tailwind.css';
+
+body {
+  & {
+    @apply bg-app-blue;
+  }
+
+  div#root {
+    height: calc(100vh - 1rem);
+  }
+}

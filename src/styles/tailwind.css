@@ -1,0 +1,7 @@
+/* !
+ ! Don't touch this file! 
+ ! Any modification will cause HMR to take over 10 seconds to recompile the changes
+ ! */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';

@@ -1,0 +1,19 @@
+@import '../utils/borders.css';
+
+div.item-list {
+  & {
+    @apply flex flex-col h-full justify-start p-1 gap-2 rounded bg-card-blue shadow-md;
+  }
+
+  & :nth-child(odd) {
+    @apply bg-card-light;
+  }
+
+  & :nth-child(even) {
+    @apply bg-card-dark;
+  }
+
+  div.selected {
+    @apply bg-card-selected solid-border;
+  }
+}
