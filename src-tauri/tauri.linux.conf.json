@@ -1,0 +1,10 @@
+{
+    "tauri": {
+        "bundle": {
+            "deb": {
+                "depends": [],
+                "useBootstrapper": false
+            }
+        }
+    }
+}
