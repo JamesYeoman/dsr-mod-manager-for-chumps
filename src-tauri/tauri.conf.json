@@ -1,10 +1,10 @@
 {
   "package": {
-    "productName": "tauri-app",
-    "version": "0.1.0"
+    "productName": "DSRBMM",
+    "version": "0.0.1"
   },
   "build": {
-    "distDir": "../dist",
+    "distDir": "../frontend/dist",
     "devPath": "http://localhost:3000",
     "beforeDevCommand": "yarn dev",
     "beforeBuildCommand": "yarn build"
@@ -12,8 +12,8 @@
   "tauri": {
     "bundle": {
       "active": true,
-      "targets": "all",
-      "identifier": "com.tauri.dev",
+      "targets": "msi",
+      "identifier": "io.github.jamesyeoman.dsrbmm",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
@@ -24,23 +24,56 @@
       "resources": [],
       "externalBin": [],
       "copyright": "",
-      "category": "DeveloperTool",
-      "shortDescription": "",
-      "longDescription": ""
+      "category": "Game",
+      "shortDescription": "DSRBMM",
+      "longDescription": "",
+      "windows": {
+        "digestAlgorithm": "sha256",
+        "certificateThumbprint": null,
+        "timestampUrl": "",
+        "wix": {
+          "license": "../LICENSE"
+        }
+      }
     },
     "updater": {
       "active": false
     },
     "allowlist": {
       "all": false,
-      "shell": {
-        "execute": false,
-        "open": false
-      },
       "fs": {
-        "readBinaryFile": false,
-        "readTextFile": false,
-        "writeFile": false
+        "all": false,
+        "readTextFile": true,
+        "readDir": true,
+        "copyFile": true,
+        "createDir": true,
+        "removeDir": true,
+        "removeFile": true,
+        "renameFile": true
+      },
+      "window": {
+        "all": false
+      },
+      "shell": {
+        "all": false
+      },
+      "dialog": {
+        "all": false
+      },
+      "http": {
+        "all": false
+      },
+      "notification": {
+        "all": false
+      },
+      "globalShortcut": {
+        "all": false
+      },
+      "os": {
+        "all": false
+      },
+      "path": {
+        "all": false
       }
     },
     "windows": [

@@ -1,15 +1,9 @@
 [package]
-name = "app"
+name = "dsrbmm"
 version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
-default-run = "app"
-edition = "2018"
-build = "src/build.rs"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Dark Souls Remastered Bulk Mod Manager"
+edition = "2021"
+rust-version = "1.56"
 
 [build-dependencies]
 tauri-build = { version = "1.0.0-beta.4" }

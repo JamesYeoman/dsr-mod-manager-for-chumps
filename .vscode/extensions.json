@@ -1,6 +1,5 @@
 {
   "recommendations": [
-    "rust-lang.rust",
     "visualstudioexptteam.vscodeintellicode",
     "eamodio.gitlens",
     "aaron-bond.better-comments",
@@ -12,7 +11,9 @@
     "esbenp.prettier-vscode",
     "syler.sass-indented",
     "pmneo.tsimporter",
-    "mgmcdermott.vscode-language-babel",
-    "coenraads.bracket-pair-colorizer-2"
+    "coenraads.bracket-pair-colorizer-2",
+    "matklad.rust-analyzer",
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss"
   ]
 }
