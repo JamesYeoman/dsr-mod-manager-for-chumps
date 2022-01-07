@@ -1,0 +1,14 @@
+/* Only to be included in index.tsx to avoid HMR slowdowns */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .soft-corners {
+    @apply rounded-xl shadow-lg;
+  }
+
+  .section-card {
+    @apply soft-corners bg-base-200;
+  }
+}

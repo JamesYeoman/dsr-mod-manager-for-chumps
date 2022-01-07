@@ -1,0 +1,7 @@
+body {
+  @apply bg-base-300;
+}
+
+body > div#root {
+  @apply h-screen;
+}
