@@ -1,29 +1,34 @@
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import { defineConfig } from 'vite';
+import { resolve } from 'path';
+import { ConfigEnv, defineConfig } from 'vite';
+import tailwind from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 // https://vitejs.dev/config/
-export default defineConfig((command) => {
-  maybeCloseStdin(command);
+export default defineConfig((configEnv) => {
+  const devMode = configEnv.mode === 'development';
+  maybeCloseStdin(configEnv);
   return {
-    root: path.join(process.cwd() + '/frontend'),
+    root: resolve(__dirname, 'frontend'),
     css: {
       postcss: {
-        map: command.mode === 'development' ? { inline: false } : false,
-        plugins: [
-          require('tailwindcss/nesting')(require('postcss-nesting')),
-          require('tailwindcss')(),
-          require('autoprefixer')(),
-        ],
+        map: devMode ? { inline: false } : false,
+        plugins: [tailwind(), autoprefixer()],
       },
     },
     plugins: [react()],
+    build: {
+      outDir: resolve(__dirname, 'dist'), // Move dist out of frontend folder
+      emptyOutDir: !devMode,
+      sourcemap: devMode,
+      minify: devMode,
+    },
   };
 });
 
 // https://github.com/vitejs/vite/issues/5743
-function maybeCloseStdin(command) {
-  if (command == 'build') return;
+function maybeCloseStdin(configEnv: ConfigEnv) {
+  if (configEnv.command === 'build') return;
   process.stdin.on('close', () => {
     process.exit(0);
   });
