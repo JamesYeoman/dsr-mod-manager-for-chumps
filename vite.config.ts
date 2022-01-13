@@ -5,12 +5,15 @@ import { ConfigEnv, defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => {
   const devMode = configEnv.mode === 'development';
+  const ghPageDir = resolve(__dirname, 'docs');
+  const buildDir = resolve(__dirname, 'dist');
   maybeCloseStdin(configEnv);
   return {
     root: resolve(__dirname, 'frontend'),
     plugins: [react()],
     build: {
-      outDir: resolve(__dirname, 'dist'), // Move dist out of frontend folder
+      // Move dist out of frontend folder
+      outDir: configEnv.mode === 'ghpage' ? ghPageDir : buildDir,
       emptyOutDir: !devMode,
       sourcemap: devMode,
       minify: devMode,
