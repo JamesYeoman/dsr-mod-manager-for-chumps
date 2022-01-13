@@ -10,8 +10,7 @@
     "serve": "vite preview",
     "tauri": "tauri",
     "lint": "eslint ./frontend/src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
-    "lint:format": "prettier --loglevel warn --write \"./frontend/src/**/*.{js,jsx,ts,tsx,css,md,json}\"",
-    "build_ghpage": "tsc && vite build --config vite/vite.config.ghpage.ts"
+    "lint:format": "prettier --loglevel warn --write \"./frontend/src/**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
