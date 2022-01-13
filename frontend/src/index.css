@@ -8,7 +8,12 @@
     @apply rounded-xl shadow-lg;
   }
 
-  .section-card {
-    @apply soft-corners bg-base-200;
+  .flex-vert {
+    @apply flex flex-col;
+  }
+
+  .card-text {
+    @apply font-bold text-center;
+    font-size: 1.25rem;
   }
 }
