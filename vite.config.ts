@@ -1,8 +1,6 @@
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { ConfigEnv, defineConfig } from 'vite';
-import tailwind from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
 
 // https://vitejs.dev/config/
 export default defineConfig((configEnv) => {
@@ -10,12 +8,6 @@ export default defineConfig((configEnv) => {
   maybeCloseStdin(configEnv);
   return {
     root: resolve(__dirname, 'frontend'),
-    css: {
-      postcss: {
-        map: devMode ? { inline: false } : false,
-        plugins: [tailwind(), autoprefixer()],
-      },
-    },
     plugins: [react()],
     build: {
       outDir: resolve(__dirname, 'dist'), // Move dist out of frontend folder
