@@ -8,6 +8,8 @@ export default defineConfig((configEnv) => {
   maybeCloseStdin(configEnv);
   return {
     root: resolve(__dirname, 'frontend'),
+    // Github pages requires this prefix. Unsure how it'll affect dev mode at the moment
+    base: '/dsrbmm/',
     plugins: [react()],
     build: {
       // Move dist out of frontend folder
