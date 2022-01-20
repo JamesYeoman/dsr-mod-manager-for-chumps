@@ -10,6 +10,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[rust]": {
+    "editor.defaultFormatter": "matklad.rust-analyzer",
+  },
+  "[typescript][typescriptreact][javascript][javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
   "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"]
 }
