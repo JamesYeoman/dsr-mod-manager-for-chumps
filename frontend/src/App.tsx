@@ -6,7 +6,6 @@ import InfoPane from './components/InfoPane';
 import ItemList, { ItemProps } from './components/ItemList';
 import PrimaryButton from './components/PrimaryButton';
 import { isTauriContext } from './utils/tauri';
-import './App.css';
 
 const dummyDebugData: ItemProps[] = [
   { content: 'This is a dummy mod', id: 'mod-0' },
