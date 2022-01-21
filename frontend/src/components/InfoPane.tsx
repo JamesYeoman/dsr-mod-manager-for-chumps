@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
 import cx from 'classnames';
+import React, { useCallback, useState } from 'react';
+import './InfoPane.css';
 
 const tabs = ['File List', 'Overrides', 'Overridden By', 'Metadata'];
 
 export default function InfoPane() {
   const [selectedTab, setSelectedTab] = useState(0);
 
-  const tabClickHandler = (tab: number) => {
-    if (selectedTab === tab) {
-      return;
-    }
+  const tabClickHandler = useCallback(
+    (tab: number) => {
+      if (selectedTab === tab) {
+        return;
+      }
 
-    setSelectedTab(tab);
-  };
+      setSelectedTab(tab);
+    },
+    [selectedTab],
+  );
 
   return (
-    <React.Fragment>
+    <div className="flex-vert flex-auto rounded-b-lg">
       <div className="tabs bg-base-300">
         {tabs.map((value, index) => (
           <div
-            key={'tab-' + value}
+            key={'tab-' + value.toLowerCase().replace(' ', '-')}
             onClick={() => tabClickHandler(index)}
-            className={cx(
-              'tab bg-base-200 tab-xs sm:tab-xs md:tab-sm lg:tab-md xl:tab-lg tab-lifted',
-              {
-                'tab-active': selectedTab === index,
-              },
-            )}>
+            className={cx('infoTab', { 'tab-active': selectedTab === index })}>
             {value}
           </div>
         ))}
@@ -34,6 +33,6 @@ export default function InfoPane() {
       <div className="bg-base-100 rounded-b-lg flex-auto">
         {/* TODO: Display tab content here */}
       </div>
-    </React.Fragment>
+    </div>
   );
 }

@@ -1,0 +1,3 @@
+div.infoTab {
+  @apply tab bg-base-200 tab-xs sm:tab-xs md:tab-sm lg:tab-md xl:tab-lg tab-lifted;
+}

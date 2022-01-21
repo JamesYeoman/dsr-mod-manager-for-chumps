@@ -15,8 +15,8 @@ export default defineConfig((configEnv) => {
       // Move dist out of frontend folder
       outDir: resolve(__dirname, 'dist'),
       emptyOutDir: !devMode,
+      minify: !devMode,
       sourcemap: devMode,
-      minify: devMode,
     },
   };
 });
