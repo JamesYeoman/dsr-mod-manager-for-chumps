@@ -1,5 +1,5 @@
 import { DraggableStateSnapshot } from 'react-beautiful-dnd';
-import { DragStyle } from './interfaces';
+import { DragStyle, ErrorObj } from './interfaces';
 
 export const reorder = <T>(list: Array<T>, source: number, destination: number) => {
   const clone = Array.from(list);
@@ -9,8 +9,21 @@ export const reorder = <T>(list: Array<T>, source: number, destination: number) 
   return clone;
 };
 
-export const wrapToError = (obj: unknown) =>
-  new Error(`The following object was caught in a catch block: ${obj}`);
+const wrapToError = (obj: unknown) => {
+  if (obj instanceof Error) {
+    return obj;
+  }
+
+  return new Error(`The following object was caught in a catch block: ${obj}`);
+};
+
+export const wrapToErrObj = (obj: unknown) => {
+  if (obj instanceof Error) {
+    return obj as ErrorObj;
+  }
+
+  return wrapToError(obj) as ErrorObj;
+};
 
 export function getStyle(snapshot: DraggableStateSnapshot, style?: DragStyle) {
   if (!snapshot.isDropAnimating) {

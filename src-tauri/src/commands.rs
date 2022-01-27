@@ -29,6 +29,7 @@ pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<types::ModData>> {
   Ok(mod_list)
 }
 
+//TODO: Create a command like this but for the mods location
 #[command]
 pub async fn request_game_location(state: AppState<'_>) -> Response<String> {
   let mut builder = FileDialogBuilder::new();

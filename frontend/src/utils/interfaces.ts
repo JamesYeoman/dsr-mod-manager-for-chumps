@@ -13,6 +13,17 @@ export interface ModsSliceState {
   loadErr?: ErrorObj;
 }
 
+export interface FolderLocation {
+  old: string;
+  new: string;
+}
+
+export interface SettingsSliceState {
+  modsLocation: FolderLocation;
+  gameLocation: FolderLocation;
+  isRunningTauriCmd: boolean;
+}
+
 export interface ErrorObj {
   name: string;
   message: string;
