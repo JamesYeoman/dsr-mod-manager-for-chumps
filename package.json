@@ -5,10 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "dev_debug": "vite --debug",
     "build": "tsc && vite build",
+    "devTauri": "cd src-tauri && cargo tauri dev",
     "serve": "vite preview",
-    "tauri": "tauri",
     "lint": "eslint ./frontend/src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
     "lint:format": "prettier --loglevel warn --write \"./frontend/src/**/*.{js,jsx,ts,tsx,css,md,json}\""
   },

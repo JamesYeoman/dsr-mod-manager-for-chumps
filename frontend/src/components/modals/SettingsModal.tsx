@@ -5,7 +5,12 @@ import './settingsModal.css';
 import { useAppDispatch, useAppSelector } from '../../utils/hooks';
 import FolderInput from '../form/FolderInput';
 import { FolderLocation } from '../../utils/interfaces';
-import { pickGameLocation, pickModsLocation } from '../../redux/slices/settings';
+import {
+  pickGameLocation,
+  pickModsLocation,
+  settingsCancel,
+  settingsSave,
+} from '../../redux/slices/settings';
 
 const calcFolderVal = (f: FolderLocation) => (f.new.length > 0 ? f.new : f.old);
 
@@ -34,10 +39,16 @@ const SettingsModal = () => {
             />
           </div>
           <div className="modal-action">
-            <label htmlFor="settings-modal" className="btn btn-primary modal-button">
+            <label
+              htmlFor="settings-modal"
+              className="btn btn-primary modal-button"
+              onClick={() => dispatch(settingsSave())}>
               Save
             </label>
-            <label htmlFor="settings-modal" className="btn modal-button">
+            <label
+              htmlFor="settings-modal"
+              className="btn modal-button"
+              onClick={() => dispatch(settingsCancel())}>
               Cancel
             </label>
           </div>

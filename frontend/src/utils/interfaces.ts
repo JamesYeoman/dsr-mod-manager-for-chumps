@@ -34,4 +34,9 @@ export interface AsyncThunkCfg {
   dispatch: AppDispatch;
   state: RootState;
 }
+
+export interface TauriError {
+  message: string;
+}
+
 export type DragStyle = DraggingStyle | NotDraggingStyle;

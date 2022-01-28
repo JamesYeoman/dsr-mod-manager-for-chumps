@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
-import { SettingsSliceState } from '../../utils/interfaces';
-import { isTauriContext } from '../../utils/tauri';
-import { wrapToErrObj } from '../../utils/util';
+import { SettingsSliceState, AsyncThunkCfg } from '../../utils/interfaces';
+import { isTauriContext, tauriErrHandler } from '../../utils/tauri';
 import { AppDispatch } from '../store';
 
 const defaultVal = isTauriContext ? '' : 'Unavailable. Not running in tauri';
@@ -52,14 +51,14 @@ export const pickGameLocation = createAsyncThunk<void, void, { dispatch: AppDisp
     if (!isTauriContext) {
       return;
     }
+    //TODO: use this flag to detect race conditions
     dispatch(toggleIsRunningTauriCmd());
 
     try {
       const data = await invoke<string>('request_game_location');
       dispatch(setNewGameFolder(data));
     } catch (e) {
-      const err = wrapToErrObj(e);
-      alert(err);
+      tauriErrHandler(e);
     } finally {
       dispatch(toggleIsRunningTauriCmd());
     }
@@ -78,10 +77,51 @@ export const pickModsLocation = createAsyncThunk<void, void, { dispatch: AppDisp
       const data = await invoke<string>('request_mods_location');
       dispatch(setNewModsFolder(data));
     } catch (e) {
-      const err = wrapToErrObj(e);
-      alert(err);
+      tauriErrHandler(e);
     } finally {
       dispatch(toggleIsRunningTauriCmd());
+    }
+  },
+);
+
+export const settingsCancel = createAsyncThunk<void, void, AsyncThunkCfg>(
+  'settings/cancel',
+  async (_unused, { dispatch, getState }) => {
+    const { gameLocation, modsLocation } = getState().settings;
+
+    try {
+      await invoke<string>('discard_settings');
+      if (gameLocation.new.length > 0) {
+        dispatch(setNewGameFolder(''));
+      }
+
+      if (modsLocation.new.length > 0) {
+        dispatch(setNewModsFolder(''));
+      }
+    } catch (e) {
+      tauriErrHandler(e);
+    }
+  },
+);
+
+export const settingsSave = createAsyncThunk<void, void, AsyncThunkCfg>(
+  'settings/save',
+  async (_unused, { dispatch, getState }) => {
+    const { gameLocation, modsLocation } = getState().settings;
+
+    try {
+      await invoke<string>('save_settings');
+      if (gameLocation.new.length > 0) {
+        dispatch(setGameFolder(gameLocation.new));
+        dispatch(setNewGameFolder(''));
+      }
+
+      if (modsLocation.new.length > 0) {
+        dispatch(setModsFolder(modsLocation.new));
+        dispatch(setNewModsFolder(''));
+      }
+    } catch (e) {
+      tauriErrHandler(e);
     }
   },
 );
