@@ -11,10 +11,13 @@
     "source.fixAll.stylelint": true
   },
   "[rust]": {
-    "editor.defaultFormatter": "matklad.rust-analyzer",
+    "editor.defaultFormatter": "matklad.rust-analyzer"
   },
   "[typescript][typescriptreact][javascript][javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"]
+  "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"],
+  "rust-analyzer.hoverActions.debug": false,
+  "rust-analyzer.diagnostics.enableExperimental": false,
+  "rust-analyzer.cargo.allFeatures": true
 }

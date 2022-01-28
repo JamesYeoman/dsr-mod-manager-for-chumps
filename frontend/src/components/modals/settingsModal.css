@@ -1,0 +1,3 @@
+.modal-box-size {
+  @apply lg:max-w-[90%];
+}

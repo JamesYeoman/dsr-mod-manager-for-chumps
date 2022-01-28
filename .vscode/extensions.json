@@ -10,6 +10,10 @@
     "esbenp.prettier-vscode",
     "pmneo.tsimporter",
     "matklad.rust-analyzer",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "usernamehw.errorlens",
+    "serayuzgur.crates",
+    "ms-vscode.cpptools",
+    "pkief.material-icon-theme"
   ]
 }

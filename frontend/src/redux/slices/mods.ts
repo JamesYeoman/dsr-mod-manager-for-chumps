@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
 import { AsyncThunkCfg, ErrorObj, ModInfo, ModsSliceState } from '../../utils/interfaces';
-import { isTauriContext } from '../../utils/tauri';
-import { reorder, wrapToError } from '../../utils/util';
+import { isTauriContext, wrapTauriErr } from '../../utils/tauri';
+import { reorder } from '../../utils/util';
 import { DropResult } from 'react-beautiful-dnd';
 
 const defaultState: ModsSliceState = {
@@ -54,8 +54,8 @@ export const refreshModList = createAsyncThunk<void, void, AsyncThunkCfg>(
       const data = isTauriContext ? await invoke<ModInfo[]>('get_mod_list') : mockData;
       dispatch(setList(data));
     } catch (e) {
-      const err = e instanceof Error ? e : wrapToError(e);
-      dispatch(setLoadErr({ ...(err as ErrorObj) }));
+      const err = wrapTauriErr(e) as ErrorObj;
+      dispatch(setLoadErr(err));
     } finally {
       dispatch(setLoading(false));
     }

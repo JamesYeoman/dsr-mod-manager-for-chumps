@@ -2,7 +2,9 @@
 
 set -e
 
+export GH_PAGES_BUILD=1
 yarn build
+unset GH_PAGES_BUILD
 
 cd dist
 

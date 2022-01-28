@@ -16,6 +16,9 @@
     @apply font-bold text-center;
     font-size: 1.25rem;
   }
+  .debug-border {
+    @apply border-2 border-solid border-red-500;
+  }
 }
 
 body {

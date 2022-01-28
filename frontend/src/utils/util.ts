@@ -9,9 +9,6 @@ export const reorder = <T>(list: Array<T>, source: number, destination: number) 
   return clone;
 };
 
-export const wrapToError = (obj: unknown) =>
-  new Error(`The following object was caught in a catch block: ${obj}`);
-
 export function getStyle(snapshot: DraggableStateSnapshot, style?: DragStyle) {
   if (!snapshot.isDropAnimating) {
     return style;

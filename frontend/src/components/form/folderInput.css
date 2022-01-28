@@ -1,0 +1,16 @@
+.cell-card {
+  @apply card min-h-full max-h-full h-full justify-center;
+}
+
+.value-card {
+  @apply bg-base-200 col-span-8 px-3 font-mono;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+
+.browse-button {
+  @apply max-h-full h-full col-span-1 col-start-11;
+  margin-left: 2px;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
