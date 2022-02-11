@@ -1,21 +1,10 @@
+// A 'solution' tsconfig, used to support Typescript Project References
+// https://www.typescriptlang.org/docs/handbook/project-references.html#overall-structure
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "types": ["vite/client"],
-    "allowJs": false,
-    "skipLibCheck": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
-  },
-  "include": ["./frontend/src"]
+  "files": [],
+  "references": [
+    {
+      "path": "frontend"
+    }
+  ]
 }

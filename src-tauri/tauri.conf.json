@@ -4,10 +4,10 @@
     "version": "0.0.1"
   },
   "build": {
-    "distDir": "../dist",
+    "distDir": "../frontend/dist",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "yarn dev --clearScreen false",
-    "beforeBuildCommand": "yarn build"
+    "beforeDevCommand": "yarn run:frontend dev --clearScreen false",
+    "beforeBuildCommand": "yarn run:frontend build"
   },
   "tauri": {
     "bundle": {

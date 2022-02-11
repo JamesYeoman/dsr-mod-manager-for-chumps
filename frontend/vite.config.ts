@@ -16,13 +16,11 @@ export default defineConfig((configEnv) => {
   const devMode = configEnv.mode === 'development';
   maybeCloseStdin(configEnv);
   return {
-    root: resolve(__dirname, 'frontend'),
     base: 'GH_PAGES_BUILD' in process.env ? '/dsrbmm/' : undefined,
     plugins: [react()],
     build: {
       // Move dist out of frontend folder
       outDir: resolve(__dirname, 'dist'),
-      emptyOutDir: !devMode,
       minify: !devMode,
       sourcemap: devMode,
     },
