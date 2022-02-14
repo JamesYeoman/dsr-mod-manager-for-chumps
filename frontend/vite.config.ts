@@ -20,7 +20,7 @@ export default defineConfig((configEnv) => {
     plugins: [react()],
     build: {
       // Move dist out of frontend folder
-      outDir: resolve(__dirname, 'dist'),
+      outDir: resolve(__dirname, 'build', 'dist'),
       minify: !devMode,
       sourcemap: devMode,
     },
