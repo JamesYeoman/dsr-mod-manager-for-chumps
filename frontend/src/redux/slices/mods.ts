@@ -1,9 +1,13 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import type { AsyncThunkCfg, ErrorObj } from '../../utils/interfaces';
+import type { ModInfo, ModsSliceState } from '../../utils/interfaces';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import type { DropResult } from 'react-beautiful-dnd';
+
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
-import { AsyncThunkCfg, ErrorObj, ModInfo, ModsSliceState } from '../../utils/interfaces';
+
 import { isTauriContext, wrapTauriErr } from '../../utils/tauri';
 import { reorder } from '../../utils/util';
-import { DropResult } from 'react-beautiful-dnd';
 
 const defaultState: ModsSliceState = {
   list: [],

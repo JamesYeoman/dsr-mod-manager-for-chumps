@@ -1,4 +1,4 @@
-import { TauriError } from './interfaces';
+import type { TauriError } from './interfaces';
 
 export const isTauriContext = window.rpc && 'notify' in window.rpc;
 

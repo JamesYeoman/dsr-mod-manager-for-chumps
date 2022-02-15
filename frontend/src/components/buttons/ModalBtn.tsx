@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 interface Props {
   modalIDPrefix: string;
@@ -8,12 +8,12 @@ interface Props {
 const ModalBtn = ({ modalIDPrefix, buttonText }: Props) => {
   const id = `${modalIDPrefix}-modal`;
   return (
-    <React.Fragment>
+    <Fragment>
       <label htmlFor={id} className="btn btn-primary modal-button" tabIndex={0}>
         {buttonText}
       </label>
       <input type="checkbox" id={id} className="modal-toggle" />
-    </React.Fragment>
+    </Fragment>
   );
 };
 

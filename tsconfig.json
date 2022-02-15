@@ -2,6 +2,8 @@
 // https://www.typescriptlang.org/docs/handbook/project-references.html#overall-structure
 {
   "files": [],
+  "exclude": ["**/node_modules"],
+  "include": [],
   "references": [
     {
       "path": "frontend"

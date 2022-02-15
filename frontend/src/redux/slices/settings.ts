@@ -1,8 +1,11 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import type { AsyncThunkCfg, SettingsSliceState } from '../../utils/interfaces';
+import type { AppDispatch } from '../store';
+import type { PayloadAction } from '@reduxjs/toolkit';
+
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
-import { SettingsSliceState, AsyncThunkCfg } from '../../utils/interfaces';
+
 import { isTauriContext, tauriErrHandler } from '../../utils/tauri';
-import { AppDispatch } from '../store';
 
 const defaultVal = isTauriContext ? '' : 'Unavailable. Not running in tauri';
 

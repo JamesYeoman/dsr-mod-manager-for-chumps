@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+
 import ActionButtons from './components/ActionButtons';
 import InfoPane from './components/InfoPane';
 import ModList from './components/ModList';
@@ -40,7 +41,8 @@ const App = () => {
                   {
                     'outline outline-2 outline-green-500': snapshot.isDraggingOver,
                   },
-                )}>
+                )}
+              >
                 <ModList />
                 {provided.placeholder}
               </div>

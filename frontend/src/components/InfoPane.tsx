@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import React, { useCallback, useState } from 'react';
+
 import './InfoPane.css';
 
 const tabs = ['File List', 'Overrides', 'Overridden By', 'Metadata'];
@@ -25,7 +26,8 @@ export default function InfoPane() {
           <div
             key={'tab-' + value.toLowerCase().replace(' ', '-')}
             onClick={() => tabClickHandler(index)}
-            className={cx('infoTab', { 'tab-active': selectedTab === index })}>
+            className={cx('infoTab', { 'tab-active': selectedTab === index })}
+          >
             {value}
           </div>
         ))}

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { refreshModList } from '../redux/slices/mods';
 import { useAppDispatch } from '../utils/hooks';
 import SettingsModal from './modals/SettingsModal';

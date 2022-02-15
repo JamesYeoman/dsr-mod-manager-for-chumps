@@ -1,16 +1,18 @@
-import React from 'react';
-import ModalBtn from '../buttons/ModalBtn';
+import type { FolderLocation } from '../../utils/interfaces';
 
-import './settingsModal.css';
-import { useAppDispatch, useAppSelector } from '../../utils/hooks';
-import FolderInput from '../form/FolderInput';
-import { FolderLocation } from '../../utils/interfaces';
+import React from 'react';
+
 import {
   pickGameLocation,
   pickModsLocation,
   settingsCancel,
   settingsSave,
 } from '../../redux/slices/settings';
+import { useAppDispatch, useAppSelector } from '../../utils/hooks';
+import ModalBtn from '../buttons/ModalBtn';
+import FolderInput from '../form/FolderInput';
+
+import './settingsModal.css';
 
 const calcFolderVal = (f: FolderLocation) => (f.new.length > 0 ? f.new : f.old);
 
@@ -26,7 +28,7 @@ const SettingsModal = () => {
         <div className="modal-box max-w-[90%] lg:max-h-[90%] h-full flex flex-col justify-between">
           <div>
             <h1 className="text-center text-3xl font-bold p-2">Settings</h1>
-            <div className="divider"></div>
+            <div className="divider" />
             <FolderInput
               label="Game folder: "
               value={calcFolderVal(gameLocation)}
@@ -42,13 +44,15 @@ const SettingsModal = () => {
             <label
               htmlFor="settings-modal"
               className="btn btn-primary modal-button"
-              onClick={() => dispatch(settingsSave())}>
+              onClick={() => dispatch(settingsSave())}
+            >
               Save
             </label>
             <label
               htmlFor="settings-modal"
               className="btn modal-button"
-              onClick={() => dispatch(settingsCancel())}>
+              onClick={() => dispatch(settingsCancel())}
+            >
               Cancel
             </label>
           </div>

@@ -1,4 +1,6 @@
-import { ReactNode, SVGProps } from 'react';
+import type { ReactNode, SVGProps } from 'react';
+
+import React from 'react';
 
 interface IconBaseProps {
   className?: string;
@@ -9,7 +11,7 @@ interface IconBaseProps {
 
 const IconBase = (props: IconBaseProps) => {
   const { className, x, y, children } = props;
-  let svgProps: Partial<SVGProps<SVGSVGElement>> = {
+  const svgProps: Partial<SVGProps<SVGSVGElement>> = {
     xmlns: 'http://www.w3.org/2000/svg',
     version: '1.1',
     x: '0px',

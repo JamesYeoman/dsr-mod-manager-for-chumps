@@ -1,6 +1,9 @@
-import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { ConfigEnv, defineConfig } from 'vite';
+
+import type { ConfigEnv } from 'vite';
+
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // https://github.com/vitejs/vite/issues/5743
 function maybeCloseStdin(configEnv: ConfigEnv) {

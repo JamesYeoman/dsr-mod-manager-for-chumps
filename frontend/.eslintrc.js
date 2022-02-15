@@ -1,29 +1,8 @@
+const base = require('@~/config/.eslintrc.ui');
 module.exports = {
-  root: true,
-  parser: '@typescript-eslint/parser',
+  ...base,
   parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: { jsx: true },
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  env: {
-    browser: true,
-    amd: true,
-    node: true,
-  },
-  extends: [
-    'eslint:recommended',
-    'plugin:react/recommended',
-    'plugin:prettier/recommended',
-  ],
-  rules: {
-    'react/react-in-jsx-scope': 'off',
-    'react/prop-types': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
+    ...base.parserOptions,
+    project: './tsconfig.json',
   },
 };

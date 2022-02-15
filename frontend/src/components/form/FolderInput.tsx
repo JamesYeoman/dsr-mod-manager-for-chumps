@@ -1,3 +1,5 @@
+import React from 'react';
+
 import FolderIcon from '../icons/Folder';
 import './folderInput.css';
 

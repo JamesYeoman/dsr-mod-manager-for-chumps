@@ -1,6 +1,9 @@
+import type { DraggableProvided } from 'react-beautiful-dnd';
+
 import classNames from 'classnames';
 import React from 'react';
-import { Draggable, DraggableProvided } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
+
 import { setSelected } from '../redux/slices/mods';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { getStyle } from '../utils/util';
@@ -18,7 +21,7 @@ export default function ModList() {
   const isSelected = useAppSelector((state) => state.mods.selected);
 
   return (
-    <>
+    <React.Fragment>
       {loading || loadErr ? (
         <div>{loadErr ? `Error: ${loadErr}` : 'Loading...'}</div>
       ) : (
@@ -33,7 +36,8 @@ export default function ModList() {
                   tabIndex={1}
                   onDoubleClick={() => dispatch(setSelected(id))}
                   className={classNames('modCard', { selected })}
-                  style={getStyle(snapshot, provided.draggableProps.style)}>
+                  style={getStyle(snapshot, provided.draggableProps.style)}
+                >
                   {content}
                 </div>
               )}
@@ -41,6 +45,6 @@ export default function ModList() {
           );
         })
       )}
-    </>
+    </React.Fragment>
   );
 }

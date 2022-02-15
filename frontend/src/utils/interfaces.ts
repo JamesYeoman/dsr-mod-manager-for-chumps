@@ -1,5 +1,5 @@
-import { DraggingStyle, NotDraggingStyle } from 'react-beautiful-dnd';
-import { AppDispatch, RootState } from '../redux/store';
+import type { AppDispatch, RootState } from '../redux/store';
+import type { DraggingStyle, NotDraggingStyle } from 'react-beautiful-dnd';
 
 export interface ModInfo {
   id: string;

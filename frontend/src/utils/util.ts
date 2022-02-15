@@ -1,5 +1,5 @@
-import { DraggableStateSnapshot } from 'react-beautiful-dnd';
-import { DragStyle } from './interfaces';
+import type { DragStyle } from './interfaces';
+import type { DraggableStateSnapshot } from 'react-beautiful-dnd';
 
 export const reorder = <T>(list: Array<T>, source: number, destination: number) => {
   const clone = Array.from(list);

@@ -1,35 +1,22 @@
 {
-  "name": "dsrbmm",
+  "name": "@~/config",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
   "packageManager": "yarn@3.1.1",
-  "scripts": {
-    "run:frontend": "yarn workspace frontend run"
-  },
-  "dependencies": {
-    "@reduxjs/toolkit": "^1.7.0",
-    "classnames": "^2.3.0",
-    "react": "^17.0.0",
-    "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^17.0.0",
-    "react-redux": "^7.2.0"
-  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
-    "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.9.0",
     "prettier": "^2.5.0",
     "typescript": "^4.5.0"
-  },
-  "workspaces": [
-    "packages/*",
-    "frontend"
-  ]
+  }
 }
