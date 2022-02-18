@@ -1729,9 +1729,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@dsrbmm/frontend@workspace:*, @dsrbmm/frontend@workspace:frontend":
+"@dsrbmm/frontend@workspace:*, @dsrbmm/frontend@workspace:packages/frontend":
   version: 0.0.0-use.local
-  resolution: "@dsrbmm/frontend@workspace:frontend"
+  resolution: "@dsrbmm/frontend@workspace:packages/frontend"
   dependencies:
     "@dsrbmm/config": "workspace:*"
     "@tauri-apps/api": 1.0.0-beta.8

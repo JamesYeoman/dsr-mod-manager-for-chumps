@@ -6,10 +6,11 @@
   "packageManager": "yarn@3.1.1",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --noEmit && vite build",
     "devTauri": "cd src-tauri && cargo tauri dev",
     "serve": "vite preview",
-    "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --ignore-path ../.gitignore",
+    "gh_deploy": "./deploy.sh",
+    "lint": "eslint ./src --ext .jsx,.js,.ts,.tsx --ignore-path ../../.gitignore",
     "lint:format": "prettier --loglevel warn --write \"./src/**/*.{js,jsx,ts,tsx,css,md,json}\""
   },
   "dependencies": {

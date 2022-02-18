@@ -28,7 +28,6 @@
     "vite": "^2.8.0"
   },
   "workspaces": [
-    "packages/*",
-    "frontend"
+    "packages/*"
   ]
 }

@@ -5,5 +5,10 @@
     "noEmit": true,
     "rootDir": "stories"
   },
-  "include": ["./stories"]
+  "include": ["./stories"],
+  "references": [
+    {
+      "path": "../frontend/tsconfig.json"
+    }
+  ]
 }
