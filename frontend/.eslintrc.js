@@ -1,4 +1,4 @@
-const base = require('@~/config/.eslintrc.ui');
+const base = require('@dsrbmm/config/eslint.ui');
 module.exports = {
   ...base,
   parserOptions: {

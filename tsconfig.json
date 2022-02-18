@@ -6,7 +6,10 @@
   "include": [],
   "references": [
     {
-      "path": "frontend"
+      "path": "frontend/tsconfig.json"
+    },
+    {
+      "path": "packages/storybook/tsconfig.json"
     }
   ]
 }

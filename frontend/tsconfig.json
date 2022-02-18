@@ -1,6 +1,7 @@
 {
-  "extends": "@~/config/tsconfig.ui.json",
+  "extends": "../packages/config/tsconfig.ui",
   "compilerOptions": {
+    "composite": true,
     "noEmit": true,
     "rootDir": "src",
     "tsBuildInfoFile": "build/no_emit.tsbuildinfo"

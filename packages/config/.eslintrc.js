@@ -54,7 +54,7 @@ module.exports = {
           ['parent', 'sibling', 'index'],
         ],
         pathGroups: [
-          { pattern: '@~/**', group: 'internal' },
+          { pattern: '@dsrbmm/**', group: 'internal' },
           { pattern: './*.css', group: 'index', position: 'after' },
         ],
         'newlines-between': 'always',
