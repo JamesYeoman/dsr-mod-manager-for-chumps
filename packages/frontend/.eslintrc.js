@@ -3,6 +3,6 @@ module.exports = {
   ...base,
   parserOptions: {
     ...base.parserOptions,
-    project: './tsconfig.json',
+    project: `${__dirname}/tsconfig.json`,
   },
 };
