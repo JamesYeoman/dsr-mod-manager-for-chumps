@@ -6,14 +6,15 @@
   "packageManager": "yarn@3.1.1",
   "scripts": {
     "run:frontend": "yarn workspace @dsrbmm/frontend run",
-    "run:storybook": "yarn workspace @dsrbmm/storybook run"
+    "run:storybook": "yarn workspace @dsrbmm/storybook run",
+    "tauri": "yarn workspace @dsrbmm/tauri run"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",
     "classnames": "^2.3.0",
-    "react": "^17.0.0",
+    "react": "17",
     "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^17.0.0",
+    "react-dom": "17",
     "react-redux": "^7.2.0"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import type { TauriError } from './interfaces';
 
-export const isTauriContext = window.rpc && 'notify' in window.rpc;
+export const isTauriContext = 'ipc' in window && 'postMessage' in window.ipc;
 
 export const isTauriError = (obj: any): obj is TauriError => {
   if (!('message' in obj)) {

@@ -3,7 +3,7 @@ import type { AppDispatch } from '../store';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api';
 
 import { isTauriContext, tauriErrHandler } from '../../utils/tauri';
 

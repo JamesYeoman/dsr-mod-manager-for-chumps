@@ -32,7 +32,7 @@
         "certificateThumbprint": null,
         "timestampUrl": "",
         "wix": {
-          "license": "../LICENSE"
+          "license": "../../LICENSE"
         }
       }
     },
@@ -40,7 +40,7 @@
       "active": false
     },
     "allowlist": {
-      "all": false
+      "all": true
     },
     "windows": [
       {

@@ -1,7 +1,5 @@
 # Dev environment setup
 
-Disclaimer: Vite is configured to use /frontend/ as the content root, because it was picking up the documentation from the rust crates when building, which resulted in grinding to a halt.
-
 ## Prerequisites
 
 [Tauri's getting started guide](https://tauri.studio/en/docs/getting-started/intro) will walk you through getting the required dependencies (and also any platform-specific dependencies)

@@ -11,6 +11,7 @@
   "rust-analyzer.cargo.allFeatures": true,
   "rust-analyzer.diagnostics.disabled": ["unresolved-macro-call"],
   "rust-analyzer.diagnostics.enableExperimental": false,
+  "rust-analyzer.linkedProjects": ["packages/tauri/Cargo.toml"],
   "rust-analyzer.hoverActions.debug": false,
   "scss.validate": false,
   "typescript.format.enable": false,
