@@ -1,0 +1,14 @@
+{
+  "extends": "../config/tsconfig.ui",
+  "compilerOptions": {
+    "composite": true,
+    "noEmit": true,
+    "rootDir": "stories"
+  },
+  "include": ["./stories"],
+  "references": [
+    {
+      "path": "../frontend/tsconfig.json"
+    }
+  ]
+}

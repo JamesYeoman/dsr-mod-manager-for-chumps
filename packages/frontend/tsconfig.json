@@ -1,0 +1,10 @@
+{
+  "extends": "../config/tsconfig.ui",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "tsBuildInfoFile": "build/no_emit.tsbuildinfo"
+  },
+  "include": ["src"],
+  "references": []
+}

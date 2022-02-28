@@ -3,46 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
+  "packageManager": "yarn@3.1.1",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "devTauri": "cd src-tauri && cargo tauri dev",
-    "serve": "vite preview",
-    "lint": "eslint ./frontend/src --ext .jsx,.js,.ts,.tsx --ignore-path ./.gitignore",
-    "lint:format": "prettier --loglevel warn --write \"./frontend/src/**/*.{js,jsx,ts,tsx,css,md,json}\""
+    "frontend": "yarn workspace @dsrbmm/frontend run",
+    "sb": "yarn workspace @dsrbmm/storybook run",
+    "tauri": "yarn workspace @dsrbmm/tauri run tauri"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^1.7.1",
-    "@tauri-apps/api": "1.0.0-beta.8",
-    "classnames": "^2.3.1",
-    "react": "^17.0.2",
+    "@reduxjs/toolkit": "^1.7.0",
+    "classnames": "^2.3.0",
+    "react": "17",
     "react-beautiful-dnd": "^13.1.0",
-    "react-dom": "^17.0.2",
+    "react-dom": "17",
     "react-redux": "^7.2.0"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "1.0.0-beta.10",
-    "@types/react": "^17.0.33",
-    "@types/react-beautiful-dnd": "^13.1.2",
-    "@types/react-dom": "^17.0.10",
-    "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
-    "@vitejs/plugin-react": "^1.0.7",
-    "autoprefixer": "^10.4.1",
-    "daisyui": "^1.21.0",
-    "eslint": "^7.30.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.24.0",
-    "postcss": "^8.4.5",
-    "postcss-import": "^14.0.2",
-    "prettier": "^2.3.2",
-    "tailwindcss": "^3.0.11",
-    "typescript": "^4.4.4",
-    "vite": "^2.7.2"
+    "autoprefixer": "^10.4.0",
+    "daisyui": "^2.0.7",
+    "eslint": "^8.9.0",
+    "postcss": "^8.4.0",
+    "postcss-import": "^14.0.0",
+    "prettier": "^2.5.0",
+    "tailwindcss": "^3.0.0",
+    "typescript": "^4.5.0",
+    "vite": "^2.8.0"
   },
-  "browserslist": [
-    "> 2%"
+  "workspaces": [
+    "packages/*"
   ]
 }
