@@ -1660,9 +1660,8 @@ __metadata:
   resolution: "@dsrbmm/tauri@workspace:packages/tauri"
   dependencies:
     "@dsrbmm/frontend": "workspace:*"
-    "@tauri-apps/cli": ^1.0.0-rc.3
-  peerDependencies:
     "@reduxjs/toolkit": ^1.7.0
+    "@tauri-apps/cli": ^1.0.0-rc.3
     autoprefixer: ^10.4.0
     classnames: ^2.3.0
     daisyui: ^2.0.7
@@ -11420,7 +11419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17":
+"react-dom@npm:17, react-dom@npm:^17.0.0":
   version: 17.0.2
   resolution: "react-dom@npm:17.0.2"
   dependencies:
@@ -11602,7 +11601,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17":
+"react@npm:17, react@npm:^17.0.0":
   version: 17.0.2
   resolution: "react@npm:17.0.2"
   dependencies:

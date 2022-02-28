@@ -5,9 +5,9 @@
   "license": "MIT",
   "packageManager": "yarn@3.1.1",
   "scripts": {
-    "run:frontend": "yarn workspace @dsrbmm/frontend run",
-    "run:storybook": "yarn workspace @dsrbmm/storybook run",
-    "tauri": "yarn workspace @dsrbmm/tauri run"
+    "frontend": "yarn workspace @dsrbmm/frontend run",
+    "sb": "yarn workspace @dsrbmm/storybook run",
+    "tauri": "yarn workspace @dsrbmm/tauri run tauri"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.0",

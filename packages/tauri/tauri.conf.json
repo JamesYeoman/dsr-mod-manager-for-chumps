@@ -6,8 +6,8 @@
   "build": {
     "distDir": "../frontend/build/dist",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "yarn run:frontend dev --clearScreen false",
-    "beforeBuildCommand": "yarn run:frontend build"
+    "beforeDevCommand": "yarn workspace @dsrbmm/frontend run dev --clearScreen false",
+    "beforeBuildCommand": "yarn workspace @dsrbmm/frontend run build"
   },
   "tauri": {
     "bundle": {
@@ -40,7 +40,13 @@
       "active": false
     },
     "allowlist": {
-      "all": true
+      "all": false,
+      "dialog": {
+        "all": true
+      },
+      "fs": {
+        "all": true
+      }
     },
     "windows": [
       {
