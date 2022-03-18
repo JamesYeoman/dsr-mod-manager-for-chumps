@@ -3,5 +3,5 @@ div.modCard {
 }
 
 div.selected {
-  @apply bg-mod-card-selected text-black;
+  @apply outline-accent-focus text-white;
 }

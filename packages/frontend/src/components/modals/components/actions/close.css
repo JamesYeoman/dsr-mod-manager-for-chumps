@@ -1,0 +1,3 @@
+button.btn-close {
+  @apply btn bg-base-100 hover:bg-base-200 border-none px-8;
+}

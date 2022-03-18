@@ -3,7 +3,7 @@ import type { AppDispatch } from '../store';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { invoke } from '@tauri-apps/api';
+import { invoke } from '@tauri-apps/api/tauri';
 
 import { isTauriContext, tauriErrHandler } from '../../utils/tauri';
 
@@ -93,7 +93,10 @@ export const settingsCancel = createAsyncThunk<void, void, AsyncThunkCfg>(
     const { gameLocation, modsLocation } = getState().settings;
 
     try {
-      await invoke<string>('discard_settings');
+      if (isTauriContext) {
+        await invoke<string>('discard_settings');
+      }
+
       if (gameLocation.new.length > 0) {
         dispatch(setNewGameFolder(''));
       }
@@ -113,7 +116,10 @@ export const settingsSave = createAsyncThunk<void, void, AsyncThunkCfg>(
     const { gameLocation, modsLocation } = getState().settings;
 
     try {
-      await invoke<string>('save_settings');
+      if (isTauriContext) {
+        await invoke<string>('save_settings');
+      }
+
       if (gameLocation.new.length > 0) {
         dispatch(setGameFolder(gameLocation.new));
         dispatch(setNewGameFolder(''));

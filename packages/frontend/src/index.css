@@ -2,25 +2,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@layer utilities {
-  .soft-corners {
-    @apply rounded-xl shadow-lg;
-  }
-
-  .flex-vert {
-    @apply flex flex-col;
-  }
-
-  .card-text {
-    @apply font-bold text-center;
-    font-size: 1.25rem;
-  }
-  .debug-border {
-    @apply border-2 border-solid border-red-500;
-  }
-}
-
-body {
-  @apply bg-base-300;
-}

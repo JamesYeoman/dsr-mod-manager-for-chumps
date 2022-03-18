@@ -39,7 +39,7 @@ const App = () => {
                 className={classNames(
                   'soft-corners bg-base-200 flex-vert justify-start h-full min-h-max overflow-y-auto',
                   {
-                    'outline outline-2 outline-green-500': snapshot.isDraggingOver,
+                    'outline outline-2 outline-accent': snapshot.isDraggingOver,
                   },
                 )}
               >
