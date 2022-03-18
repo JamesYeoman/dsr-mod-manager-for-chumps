@@ -1,23 +1,41 @@
+const plugin = require('tailwindcss/plugin');
+const colours = require('./colours.json');
+const daisyOverride = colours.darkDaisy;
+
 module.exports = {
   mode: 'jit',
-  theme: {
-    extend: {
-      colors: {
-        'app-background': '#94C7D2',
-        'section-background': '#80B6B8',
-        'mod-card-default': '#CCDCAA',
-        'mod-card-selected': '#7C9842',
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
+          neutral: daisyOverride.base.neutralBG,
+          primary: daisyOverride.base.primary,
+          secondary: daisyOverride.base.secondary,
+          accent: daisyOverride.base.accent,
+          'neutral-focus': daisyOverride.base.neutralFocus,
+          'base-100': daisyOverride.base.light,
+          'base-200': daisyOverride.base.medium,
+          'base-300': daisyOverride.base.dark,
+          'base-content': daisyOverride.content.base,
+          'neutral-content': daisyOverride.content.neutral,
+          'primary-content': daisyOverride.content.primary,
+          'secondary-content': daisyOverride.content.secondary,
+          'accent-content': daisyOverride.content.accent,
+        },
       },
-    },
+    ],
   },
   plugins: [
     require('daisyui'),
-    require('tailwindcss/plugin')(function ({ addBase, addUtilities, theme }) {
+    plugin(function ({ addBase }) {
       addBase({
         body: {
-          'background-color': theme('colors.base-300'),
+          'background-color': daisyOverride.base.dark,
         },
       });
+    }),
+    plugin(function ({ addUtilities, theme }) {
       addUtilities({
         '.soft-corners': {
           '@apply rounded-xl shadow-lg': {},
@@ -35,23 +53,13 @@ module.exports = {
           'border-style': 'solid',
           'border-color': theme('colors.red.500'),
         },
+        '.no-z': {
+          'z-index': 'unset',
+        },
+        '.all-z': {
+          'z-index': 999,
+        },
       });
     }),
   ],
-  daisyui: {
-    themes: [
-      {
-        dark: {
-          ...require('daisyui/src/colors/themes')['[data-theme=dark]'],
-          'base-100': '#2a2e37',
-          'base-200': '#16181d',
-          'base-300': '#000000',
-          'base-content': '#ebecf0',
-          neutral: '#2a2e37',
-          'neutral-focus': '#16181d',
-          'neutral-content': '#ffffff',
-        },
-      },
-    ],
-  },
 };

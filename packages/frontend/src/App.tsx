@@ -9,6 +9,13 @@ import { handleDropCard, refreshModList } from './redux/slices/mods';
 import { useAppDispatch } from './utils/hooks';
 import { isTauriContext } from './utils/tauri';
 
+//TODO=========================================================================
+//TODO=========================================================================
+//TODO== Create a resizable panel component                                  ==
+//TODO== Ref: https://blog.theodo.com/2020/11/react-resizeable-split-panels/ ==
+//TODO=========================================================================
+//TODO=========================================================================
+
 //* At very small window sizes, dragging to the bottom of the list will glitch out.
 //* However, in the react storybooks for react-beautiful-dnd, the same glitching doesn't happen...
 //? What is different between this code and the code used for the storybooks

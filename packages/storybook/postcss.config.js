@@ -1,6 +1,3 @@
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
+const cfg = require('@dsrbmm/config/postcss');
+
+module.exports = { ...cfg };

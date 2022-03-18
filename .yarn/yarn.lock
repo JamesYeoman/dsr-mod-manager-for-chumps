@@ -1594,6 +1594,7 @@ __metadata:
   resolution: "@dsrbmm/frontend@workspace:packages/frontend"
   dependencies:
     "@dsrbmm/config": "workspace:*"
+    "@naisutech/react-tree": 2.x.x
     "@reduxjs/toolkit": 1.x.x
     "@tauri-apps/api": 1.0.0-rc.2
     "@types/react": 17.x.x
@@ -1611,6 +1612,7 @@ __metadata:
     react-beautiful-dnd: 13.x.x
     react-dom: 17.x.x
     react-redux: 7.x.x
+    react-simple-tree-menu: ^1.1.18
     tailwindcss: 3.x.x
     typescript: 4.x.x
     vite: 2.x.x
@@ -1625,6 +1627,7 @@ __metadata:
     "@dsrbmm/config": "workspace:*"
     "@dsrbmm/frontend": "workspace:*"
     "@mdx-js/react": latest
+    "@naisutech/react-tree": 2.x.x
     "@reduxjs/toolkit": 1.x.x
     "@storybook/addon-controls": 6.4.x
     "@storybook/addon-measure": 6.4.x
@@ -1717,10 +1720,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@emotion/is-prop-valid@npm:^1.1.0":
+  version: 1.1.2
+  resolution: "@emotion/is-prop-valid@npm:1.1.2"
+  dependencies:
+    "@emotion/memoize": ^0.7.4
+  checksum: 58b1f2d429a589f8f5bc2c33a8732cbb7bbcb17131a103511ef9a94ac754d7eeb53d627f947da480cd977f9d419fd92e244991680292f3287204159652745707
+  languageName: node
+  linkType: hard
+
 "@emotion/memoize@npm:0.7.4":
   version: 0.7.4
   resolution: "@emotion/memoize@npm:0.7.4"
   checksum: 4e3920d4ec95995657a37beb43d3f4b7d89fed6caa2b173a4c04d10482d089d5c3ea50bbc96618d918b020f26ed6e9c4026bbd45433566576c1f7b056c3271dc
+  languageName: node
+  linkType: hard
+
+"@emotion/memoize@npm:^0.7.4":
+  version: 0.7.5
+  resolution: "@emotion/memoize@npm:0.7.5"
+  checksum: 83da8d4a7649a92c72f960817692bc6be13cc13e107b9f7e878d63766525ed4402881bfeb3cda61145c050281e7e260f114a0a2870515527346f2ef896b915b3
   languageName: node
   linkType: hard
 
@@ -1940,6 +1959,19 @@ __metadata:
     call-me-maybe: ^1.0.1
     glob-to-regexp: ^0.3.0
   checksum: d3b82b29368821154ce8e10bef5ccdbfd070d3e9601643c99ea4607e56f3daeaa4e755dd6d2355da20762c695c1b0570543d9f84b48f70c211ec09c4aaada2e1
+  languageName: node
+  linkType: hard
+
+"@naisutech/react-tree@npm:2.x.x":
+  version: 2.0.12
+  resolution: "@naisutech/react-tree@npm:2.0.12"
+  dependencies:
+    "@emotion/is-prop-valid": ^1.1.0
+    nanoid: ^3.1.23
+  peerDependencies:
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  checksum: fa86813f1ec269978719c3a580a08ec80b94c39b284d9678cb5a1fe8e8dc643c4dd8d40d0a4a46313b92f4aef67ec66d17c87afa1059c07e3371039b63ef4479
   languageName: node
   linkType: hard
 
@@ -5224,7 +5256,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.x.x":
+"classnames@npm:2.x.x, classnames@npm:^2.2.6":
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
@@ -7345,6 +7377,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-memoize@npm:^2.5.1":
+  version: 2.5.2
+  resolution: "fast-memoize@npm:2.5.2"
+  checksum: 79fa759719ba4eac7e8c22fb3b0eb3f18f4a31e218c00b1eb4a5b53c5781921133a6b84472d59ec5a6ea8f26ad57b43cd99a350c0547ccce51489bc9a5f0b28d
+  languageName: node
+  linkType: hard
+
 "fastparse@npm:^1.1.2":
   version: 1.1.2
   resolution: "fastparse@npm:1.1.2"
@@ -8803,6 +8842,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-empty@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "is-empty@npm:1.2.0"
+  checksum: dc80e0a8ad5439d98d128d126fe69e5dcd6b474e29753107bcfe82fc7d628c9da618d48bb24878a7891f231696405ad0a854dfe3cfc955c23d24e80d9e252e62
+  languageName: node
+  linkType: hard
+
 "is-extendable@npm:^0.1.0, is-extendable@npm:^0.1.1":
   version: 0.1.1
   resolution: "is-extendable@npm:0.1.1"
@@ -10026,7 +10072,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.2.0, nanoid@npm:^3.3.1":
+"nanoid@npm:^3.1.23, nanoid@npm:^3.2.0, nanoid@npm:^3.3.1":
   version: 3.3.1
   resolution: "nanoid@npm:3.3.1"
   bin:
@@ -11603,6 +11649,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-simple-tree-menu@npm:^1.1.18":
+  version: 1.1.18
+  resolution: "react-simple-tree-menu@npm:1.1.18"
+  dependencies:
+    classnames: ^2.2.6
+    fast-memoize: ^2.5.1
+    is-empty: ^1.2.0
+    tiny-debounce: ^0.1.1
+  peerDependencies:
+    react: ">=16.6.3"
+    react-dom: ">=16.6.3"
+  checksum: 6428b6737cc71e8ed7de3b988f656e51481374cb23a442199114447c7a7ad0f001655c6f255730dbcf3798d52168b8343295b9c7de32f9aa1795c9aa67cfd6a8
+  languageName: node
+  linkType: hard
+
 "react-sizeme@npm:^3.0.1":
   version: 3.0.2
   resolution: "react-sizeme@npm:3.0.2"
@@ -13153,6 +13214,13 @@ __metadata:
   dependencies:
     setimmediate: ^1.0.4
   checksum: ec37ae299066bef6c464dcac29c7adafba1999e7227a9bdc4e105a459bee0f0b27234a46bfd7ab4041da79619e06a58433472867a913d01c26f8a203f87cee70
+  languageName: node
+  linkType: hard
+
+"tiny-debounce@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "tiny-debounce@npm:0.1.1"
+  checksum: 876ced2bac85418c98a509bf03533c4388e1d9a3c466725350b81d6971021a5db9b398ae45a65923793cf7117e479e5692cd05a320fee2e6c0eba63f9ef10727
   languageName: node
   linkType: hard
 

@@ -1,0 +1,44 @@
+.tree-container {
+  @apply h-full;
+
+  & > div {
+    @apply h-full overflow-y-scroll;
+  }
+}
+
+.rstm-toggle-icon {
+  @apply inline-block align-middle px-3 font-mono select-none;
+
+  &-symbol {
+    @apply w-6 h-4  text-center;
+  }
+}
+
+.rstm-tree-item-group {
+  @apply bg-base-200 rounded-lg pl-0 text-left w-full;
+
+  list-style-type: none;
+
+  & .rstm-tree-item {
+    @apply border-accent border-2 border-t-0 py-3 cursor-pointer relative no-z text-base-content pr-3 flex flex-row;
+
+    background: none;
+    box-shadow: none;
+
+    &:first-of-type {
+      border-top-width: 2px;
+    }
+
+    &--active > div.tree-item-content {
+      @apply outline outline-2 outline-info;
+    }
+
+    & > div.tree-item-content {
+      @apply flex flex-row justify-start w-full px-1;
+
+      & > span {
+        @apply cursor-text;
+      }
+    }
+  }
+}
