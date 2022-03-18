@@ -1,5 +1,6 @@
 import type { ReactNode, SVGProps } from 'react';
 
+import cx from 'classnames';
 import React from 'react';
 
 interface IconBaseProps {
@@ -17,11 +18,11 @@ const IconBase = (props: IconBaseProps) => {
     x: '0px',
     y: '0px',
     viewBox: `0 0 ${x} ${y}`,
+    className: cx(
+      'fill-base-content max-h-full max-w-full w-full min-w-full',
+      className?.trim(),
+    ),
   };
-
-  if (className && className.length > 0) {
-    svgProps.className = className;
-  }
 
   return <svg {...svgProps}>{children}</svg>;
 };

@@ -1,0 +1,7 @@
+button.btn-accept {
+  @apply btn btn-primary px-8;
+}
+
+button.btn-reject {
+  @apply btn bg-base-200 hover:bg-base-300 border-none px-8 text-secondary;
+}

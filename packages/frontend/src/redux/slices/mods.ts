@@ -4,7 +4,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type { DropResult } from 'react-beautiful-dnd';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { invoke } from '@tauri-apps/api';
+import { invoke } from '@tauri-apps/api/tauri';
 
 import { isTauriContext, wrapTauriErr } from '../../utils/tauri';
 import { reorder } from '../../utils/util';

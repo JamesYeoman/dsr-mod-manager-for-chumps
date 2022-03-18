@@ -1,0 +1,18 @@
+div.modal {
+  @apply bg-base-200 bg-opacity-50;
+}
+
+div.modal-content {
+  @apply modal-box max-w-[90%] lg:max-h-[90%] h-full flex flex-col justify-between bg-base-200 shadow-black shadow-2xl;
+}
+
+h1.modal-title {
+  @apply text-center text-3xl font-bold p-2;
+}
+
+div.divider {
+  &:before,
+  &:after {
+    --tw-bg-opacity: 0.5;
+  }
+}
