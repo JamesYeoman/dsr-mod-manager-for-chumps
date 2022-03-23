@@ -1,9 +1,16 @@
 import type { AppDispatch, RootState } from '../redux/store';
 import type { DraggingStyle, NotDraggingStyle } from 'react-beautiful-dnd';
 
+import { TreeNodeInArray } from 'react-simple-tree-menu';
+
 export interface ModInfo {
   id: string;
   content: string;
+}
+
+export interface ModFileData {
+  name: string;
+  children?: ModFileData[];
 }
 
 export interface ModsSliceState {
@@ -11,6 +18,7 @@ export interface ModsSliceState {
   selected?: string;
   loading: boolean;
   loadErr?: ErrorObj;
+  fileList: TreeNodeInArray[];
 }
 
 export interface FolderLocation {

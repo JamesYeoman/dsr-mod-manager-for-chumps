@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import { setSelected } from '../redux/slices/mods';
+import { selectMod } from '../redux/slices/mods';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { getStyle } from '../utils/util';
 import './ModList.css';
@@ -34,7 +34,7 @@ export default function ModList() {
                   {...toProps(provided)}
                   id={id}
                   tabIndex={1}
-                  onDoubleClick={() => dispatch(setSelected(id))}
+                  onDoubleClick={() => dispatch(selectMod(id))}
                   className={classNames('modCard', { selected })}
                   style={getStyle(snapshot, provided.draggableProps.style)}
                 >

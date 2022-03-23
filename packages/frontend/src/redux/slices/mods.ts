@@ -1,19 +1,23 @@
-import type { AsyncThunkCfg, ErrorObj } from '../../utils/interfaces';
+import type { AsyncThunkCfg, ErrorObj, ModFileData } from '../../utils/interfaces';
 import type { ModInfo, ModsSliceState } from '../../utils/interfaces';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { DropResult } from 'react-beautiful-dnd';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
+import { TreeNodeInArray } from 'react-simple-tree-menu';
 
 import { isTauriContext, wrapTauriErr } from '../../utils/tauri';
 import { reorder } from '../../utils/util';
+import * as mocks from './mock/mods';
 
 const defaultState: ModsSliceState = {
   list: [],
   loading: false,
+  fileList: [{ key: 'root', label: 'No mod is selected' }],
 };
 
+// TODO: add support for file listings
 export const modsSlice = createSlice({
   name: 'mods',
   initialState: defaultState,
@@ -30,20 +34,16 @@ export const modsSlice = createSlice({
     setLoadErr: (state, action: PayloadAction<ErrorObj>) => {
       state.loadErr = action.payload;
     },
+    setFileInfo: (state, action: PayloadAction<TreeNodeInArray[]>) => {
+      state.fileList = action.payload;
+    },
   },
 });
 
 const { actions, reducer } = modsSlice;
-export const { setSelected, setList, setLoading, setLoadErr } = actions;
+const { setFileInfo } = actions;
+export const { setList, setLoading, setLoadErr } = actions;
 export default reducer;
-
-const mockData: ModInfo[] = [
-  { content: 'This is a dummy mod', id: 'mod-0' },
-  { content: 'This is another dummy mod', id: 'mod-1' },
-  { content: 'This is a third dummy mod', id: 'mod-2' },
-  { content: 'This is a fourth, selected dummy mod', id: 'mod-3' },
-  { content: 'This is a fifth dummy mod', id: 'mod-4' },
-];
 
 export const refreshModList = createAsyncThunk<void, void, AsyncThunkCfg>(
   'mods/refreshModList',
@@ -55,7 +55,9 @@ export const refreshModList = createAsyncThunk<void, void, AsyncThunkCfg>(
     dispatch(setLoading(true));
 
     try {
-      const data = isTauriContext ? await invoke<ModInfo[]>('get_mod_list') : mockData;
+      const data = isTauriContext
+        ? await invoke<ModInfo[]>('get_mod_list')
+        : mocks.mockModsList;
       dispatch(setList(data));
     } catch (e) {
       const err = wrapTauriErr(e) as ErrorObj;
@@ -63,6 +65,44 @@ export const refreshModList = createAsyncThunk<void, void, AsyncThunkCfg>(
     } finally {
       dispatch(setLoading(false));
     }
+  },
+);
+
+const getFileList = createAsyncThunk<void, void, AsyncThunkCfg>(
+  'mods/_getFileList',
+  async (_unused, { dispatch, getState }) => {
+    const { selected: id } = getState().mods;
+    const fn = (str: string) => [{ key: 'root', label: str }];
+    if (!id) {
+      dispatch(setFileInfo(fn('No mod is selected')));
+      return;
+    }
+
+    if (!isTauriContext) {
+      if (Object.keys(mocks.fileData).some((key) => key === id)) {
+        const data = mocks.fileData[id];
+        dispatch(setFileInfo(data));
+      } else {
+        dispatch(setFileInfo(fn('No mock data was found for ' + id)));
+      }
+
+      return;
+    }
+
+    dispatch(setFileInfo(fn('Obtaining file list from tauri is not implemented')));
+  },
+);
+
+export const selectMod = createAsyncThunk<void, string, AsyncThunkCfg>(
+  'mods/selectMod',
+  async (id, { dispatch, getState }) => {
+    const { selected: currID } = getState().mods;
+    if (id === currID) {
+      return;
+    }
+
+    dispatch(actions.setSelected(id));
+    await dispatch(getFileList());
   },
 );
 
