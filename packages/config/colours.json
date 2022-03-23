@@ -1,0 +1,21 @@
+{
+  "darkDaisy": {
+    "base": {
+      "light": "#2a2e37",
+      "neutralBG": "#2a2e37",
+      "medium": "#16181d",
+      "neutralFocus": "#16181d",
+      "dark": "#000000",
+      "primary": "#661AE6",
+      "secondary": "#D926AA",
+      "accent": "#1FB2A5"
+    },
+    "content": {
+      "base": "#ebecf0",
+      "neutral": "#ffffff",
+      "primary": "#ffffff",
+      "secondary": "#ffffff",
+      "accent": "#ffffff"
+    }
+  }
+}

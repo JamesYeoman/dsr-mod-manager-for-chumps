@@ -1611,7 +1611,9 @@ __metadata:
     react-beautiful-dnd: 13.x.x
     react-dom: 17.x.x
     react-redux: 7.x.x
+    react-simple-tree-menu: ^1.1.18
     tailwindcss: 3.x.x
+    ts-pattern: ^3.3.5
     typescript: 4.x.x
     vite: 2.x.x
   languageName: unknown
@@ -1642,7 +1644,6 @@ __metadata:
     postcss-import: 14.x.x
     prettier: 2.x.x
     react: 17.x.x
-    react-beautiful-dnd: 13.x.x
     react-dom: 17.x.x
     react-redux: 7.x.x
     storybook-builder-vite: 0.1.x
@@ -5224,7 +5225,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:2.x.x":
+"classnames@npm:2.x.x, classnames@npm:^2.2.6":
   version: 2.3.1
   resolution: "classnames@npm:2.3.1"
   checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
@@ -7345,6 +7346,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-memoize@npm:^2.5.1":
+  version: 2.5.2
+  resolution: "fast-memoize@npm:2.5.2"
+  checksum: 79fa759719ba4eac7e8c22fb3b0eb3f18f4a31e218c00b1eb4a5b53c5781921133a6b84472d59ec5a6ea8f26ad57b43cd99a350c0547ccce51489bc9a5f0b28d
+  languageName: node
+  linkType: hard
+
 "fastparse@npm:^1.1.2":
   version: 1.1.2
   resolution: "fastparse@npm:1.1.2"
@@ -8800,6 +8808,13 @@ __metadata:
   bin:
     is-docker: cli.js
   checksum: 3fef7ddbf0be25958e8991ad941901bf5922ab2753c46980b60b05c1bf9c9c2402d35e6dc32e4380b980ef5e1970a5d9d5e5aa2e02d77727c3b6b5e918474c56
+  languageName: node
+  linkType: hard
+
+"is-empty@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "is-empty@npm:1.2.0"
+  checksum: dc80e0a8ad5439d98d128d126fe69e5dcd6b474e29753107bcfe82fc7d628c9da618d48bb24878a7891f231696405ad0a854dfe3cfc955c23d24e80d9e252e62
   languageName: node
   linkType: hard
 
@@ -11603,6 +11618,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-simple-tree-menu@npm:^1.1.18":
+  version: 1.1.18
+  resolution: "react-simple-tree-menu@npm:1.1.18"
+  dependencies:
+    classnames: ^2.2.6
+    fast-memoize: ^2.5.1
+    is-empty: ^1.2.0
+    tiny-debounce: ^0.1.1
+  peerDependencies:
+    react: ">=16.6.3"
+    react-dom: ">=16.6.3"
+  checksum: 6428b6737cc71e8ed7de3b988f656e51481374cb23a442199114447c7a7ad0f001655c6f255730dbcf3798d52168b8343295b9c7de32f9aa1795c9aa67cfd6a8
+  languageName: node
+  linkType: hard
+
 "react-sizeme@npm:^3.0.1":
   version: 3.0.2
   resolution: "react-sizeme@npm:3.0.2"
@@ -13156,6 +13186,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tiny-debounce@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "tiny-debounce@npm:0.1.1"
+  checksum: 876ced2bac85418c98a509bf03533c4388e1d9a3c466725350b81d6971021a5db9b398ae45a65923793cf7117e479e5692cd05a320fee2e6c0eba63f9ef10727
+  languageName: node
+  linkType: hard
+
 "tiny-invariant@npm:^1.0.6":
   version: 1.2.0
   resolution: "tiny-invariant@npm:1.2.0"
@@ -13263,6 +13300,13 @@ __metadata:
   version: 2.2.0
   resolution: "ts-dedent@npm:2.2.0"
   checksum: 93ed8f7878b6d5ed3c08d99b740010eede6bccfe64bce61c5a4da06a2c17d6ddbb80a8c49c2d15251de7594a4f93ffa21dd10e7be75ef66a4dc9951b4a94e2af
+  languageName: node
+  linkType: hard
+
+"ts-pattern@npm:^3.3.5":
+  version: 3.3.5
+  resolution: "ts-pattern@npm:3.3.5"
+  checksum: c6f7b9b9014b3f1a7c896267c1b227c7bea46bdc323dd66ac990e3b81f385aeb8abe5de2e694351fe13ae03c2dccb0e0a6869e43007cbe8516762700b309f43d
   languageName: node
   linkType: hard
 
