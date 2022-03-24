@@ -1,3 +1,15 @@
-div.infoTab {
-  @apply tab bg-base-200 tab-xs sm:tab-xs md:tab-sm lg:tab-md xl:tab-lg tab-lifted;
+div.mod-info {
+  @apply flex-vert flex-auto rounded-b-lg;
+
+  & > div.tabs-container {
+    @apply tabs bg-base-300;
+
+    & > div {
+      @apply tab bg-base-200 tab-xs sm:tab-xs md:tab-sm lg:tab-md xl:tab-lg tab-lifted;
+    }
+  }
+}
+
+div.mod-info__content {
+  @apply bg-base-100 rounded-b-lg flex-auto;
 }

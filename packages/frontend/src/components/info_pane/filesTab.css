@@ -1,5 +1,5 @@
-.files-tab__container {
-  @apply h-1/2 p-2 bg-base-200 rounded-xl;
+.files-tab__file-list {
+  @apply h-1/2 p-2 bg-base-100 rounded-tl-xl;
   min-height: 50%;
   max-height: 50%;
 }

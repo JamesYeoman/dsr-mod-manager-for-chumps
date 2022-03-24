@@ -17,7 +17,10 @@
   "peerDependencies": {
     "daisyui": "2.x.x",
     "eslint": "8.x.x",
+    "postcss": "8.x.x",
+    "postcss-import": "14.x.x",
     "prettier": "2.x.x",
+    "tailwindcss": "3.x.x",
     "typescript": "4.x.x"
   }
 }

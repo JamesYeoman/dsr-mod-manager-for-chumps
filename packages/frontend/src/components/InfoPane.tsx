@@ -31,19 +31,19 @@ export default function InfoPane() {
   );
 
   return (
-    <div className="flex-vert flex-auto rounded-b-lg">
-      <div className="tabs bg-base-300">
+    <div className="mod-info">
+      <div className="tabs-container">
         {tabsKeys.map((value) => (
           <div
             key={'tab-' + value}
             onClick={() => tabClickHandler(value)}
-            className={cx('infoTab', { 'tab-active': selectedTab === value })}
+            className={cx({ 'tab-active': selectedTab === value })}
           >
             {tabsObj[value]}
           </div>
         ))}
       </div>
-      <div className="bg-base-100 rounded-b-lg flex-auto">
+      <div className="mod-info__content">
         {match<TabsType, ReactNode>(selectedTab)
           .with('files', () => <FilesTab />)
           .with(__, () => "Sorry, but this tab isn't implemented yet")
