@@ -22,6 +22,7 @@ const IconBase = (props: IconBaseProps) => {
       'fill-base-content max-h-full max-w-full w-full min-w-full',
       className?.trim(),
     ),
+    role: 'img',
   };
 
   return <svg {...svgProps}>{children}</svg>;

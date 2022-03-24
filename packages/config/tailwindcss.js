@@ -37,6 +37,26 @@ module.exports = {
     }),
     plugin(function ({ addUtilities, theme }) {
       addUtilities({
+        '.scrollable': {
+          'scrollbar-color': 'var(--thumb-scrollbar) var(--bg-scrollbar)',
+          'scrollbar-width': 'auto',
+          '-ms-overflow-style': 'auto',
+          '&::-webkit-scrollbar-corner': {
+            'background-color': 'var(--bg-scrollbar)',
+          },
+          '&::-webkit-scrollbar-thumb': {
+            'background-color': 'var(--thumb-scrollbar)',
+            'border-radius': '10px',
+            'box-shadow': 'inset 0 0 6px rgba(0, 0, 0, 0.3)',
+          },
+          '&::-webkit-scrollbar-track': {
+            'background-color': 'var(--bg-scrollbar)',
+          },
+          '&::-webkit-scrollbar': {
+            width: '1rem',
+            height: '1rem',
+          },
+        },
         '.soft-corners': {
           '@apply rounded-xl shadow-lg': {},
         },

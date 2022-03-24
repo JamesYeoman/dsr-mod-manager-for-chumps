@@ -2,25 +2,36 @@
   @apply h-full;
 
   & > div {
-    @apply h-full overflow-y-scroll;
+    @apply h-full overflow-y-scroll rounded-lg scrollable;
+    --bg-scrollbar: theme('colors.base-200');
+    --thumb-scrollbar: theme('colors.primary');
+
+    &::-webkit-scrollbar-track {
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+    }
   }
 }
 
-.rstm-toggle-icon {
-  @apply inline-block align-middle px-3 font-mono select-none;
+.toggle-icon {
+  @apply inline-block px-3 my-auto font-mono select-none duration-150 h-4;
 
-  &-symbol {
-    @apply w-6 h-4  text-center;
+  & > svg.symbol {
+    @apply w-6 h-4 duration-150 text-center fill-secondary-focus;
+
+    &.open {
+      @apply transition-transform rotate-90 duration-150;
+    }
   }
 }
 
-.rstm-tree-item-group {
-  @apply bg-base-200 rounded-lg pl-0 text-left w-full;
+.tree-item-group {
+  @apply bg-base-200 pl-0 text-left w-full min-h-full;
 
   list-style-type: none;
 
-  & .rstm-tree-item {
-    @apply border-accent border-2 border-t-0 py-3 cursor-pointer relative no-z text-base-content pr-3 flex flex-row;
+  & .tree-item {
+    @apply border-none py-3 cursor-pointer relative no-z text-base-content pr-3 flex flex-row;
 
     background: none;
     box-shadow: none;
@@ -30,11 +41,11 @@
     }
 
     &--active > div.tree-item-content {
-      @apply outline outline-2 outline-info;
+      @apply rounded-lg outline outline-2 outline-accent;
     }
 
     & > div.tree-item-content {
-      @apply flex flex-row justify-start w-full px-1;
+      @apply flex flex-row justify-start w-full px-1 font-mono;
 
       & > span {
         @apply cursor-text;

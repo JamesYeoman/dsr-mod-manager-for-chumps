@@ -9,7 +9,7 @@ const FilesTab = () => {
   const fileInfo = useAppSelector((state) => state.mods.fileList);
 
   return (
-    <div className="files-tab__container">
+    <div className="files-tab__file-list">
       <TreeView nodes={fileInfo} />
     </div>
   );
