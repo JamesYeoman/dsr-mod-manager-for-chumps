@@ -1,5 +1,6 @@
+use crate::mocks;
 use crate::types::{self, CommandError, ModData, PathSetting};
-use crate::utils::pathbuf_to_string;
+use crate::utils::{pathbuf_to_string, use_mutex, use_mutex_ret};
 use std::{path::PathBuf, sync::mpsc::channel};
 use tauri::{api::dialog::FileDialogBuilder, command};
 use types::{AppState, Response};
@@ -18,9 +19,7 @@ fn get_latest_setting(s: PathSetting) -> Option<String> {
 
 #[command]
 pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {
-  let lock = state.mods_location.lock().unwrap();
-  let location = lock.clone();
-  drop(lock);
+  let location = use_mutex_ret(&(state.mods_location), |lock| lock.clone());
 
   if location.current.is_empty() {
     return Ok(mocks::mod_list());
@@ -41,13 +40,15 @@ pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {
 //TODO: Create a command like this but for the mods location
 #[command]
 pub async fn request_game_location(state: AppState<'_>) -> Response<String> {
-  let mut builder = FileDialogBuilder::new();
-  let starting_location = state.game_location.lock().unwrap();
-  let path_setting = get_latest_setting(starting_location.clone());
-  if path_setting.is_some() {
-    builder = builder.set_directory(path_setting.unwrap())
-  }
-  drop(starting_location);
+  let builder = use_mutex_ret(&(state.game_location), |starting_location| {
+    let path_setting = get_latest_setting(starting_location.clone());
+    let mut fdb = FileDialogBuilder::new();
+    if path_setting.is_some() {
+      fdb = FileDialogBuilder::new().set_directory(path_setting.unwrap());
+    }
+
+    fdb
+  });
 
   let (sender, receiver) = channel::<PathBuf>();
   builder.pick_folder(move |path| {
@@ -71,9 +72,9 @@ pub async fn request_game_location(state: AppState<'_>) -> Response<String> {
 
   let selection_str = maybe_str.unwrap();
 
-  let mut loc = state.game_location.lock().unwrap();
-  loc.set_new(selection_str.clone());
-  drop(loc);
+  use_mutex(&(state.game_location), |loc| {
+    (*loc).new = selection_str.clone();
+  });
 
   Ok(selection_str)
 }
@@ -81,19 +82,19 @@ pub async fn request_game_location(state: AppState<'_>) -> Response<String> {
 #[command]
 pub fn save_settings(state: AppState<'_>) {
   println!("Saving settings!");
-  let mut loc = state.game_location.lock().unwrap();
-  (*loc).current = loc.new.clone();
-  (*loc).new = String::new();
-  println!("Saved the game_location setting!");
-  drop(loc);
+  use_mutex(&(state.game_location), |guard| {
+    (*guard).current = guard.new.clone();
+    (*guard).new = String::new();
+    println!("Saved the game_location setting!");
+  });
 }
 
 /// Basically `save_settings` but without the copy of the new values to current
 #[command]
 pub fn discard_settings(state: AppState<'_>) {
   println!("Discarding settings!");
-  let mut loc = state.game_location.lock().unwrap();
-  (*loc).new = String::new();
-  println!("Discarded the game_location setting");
-  drop(loc);
+  use_mutex(&(state.game_location), |guard| {
+    (*guard).new = String::new();
+    println!("Discarded the game_location setting");
+  });
 }
