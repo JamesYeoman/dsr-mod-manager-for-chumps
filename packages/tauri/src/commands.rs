@@ -17,23 +17,13 @@ fn get_latest_setting(s: PathSetting) -> Option<String> {
 }
 
 #[command]
-pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<types::ModData>> {
+pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {
   let lock = state.mods_location.lock().unwrap();
   let location = lock.clone();
   drop(lock);
 
   if location.current.is_empty() {
-    return Ok(vec![
-      ModData::new("mod-item-1", "This is an item"),
-      ModData::new("mod-item-2", "This is another item"),
-      ModData::new("mod-item-3", "This is a third item"),
-      ModData::new("mod-item-4", "This is a fourth item"),
-      ModData::new("mod-item-5", "This is a fifth item"),
-      ModData::new("mod-item-6", "This is a sixth item"),
-      ModData::new("mod-item-7", "This is a seventh item"),
-      ModData::new("mod-item-8", "This is an eighth item"),
-      ModData::new("mod-item-9", "This is a ninth item"),
-    ]);
+    return Ok(mocks::mod_list());
   }
 
   let mod_list = state.mod_list.clone();

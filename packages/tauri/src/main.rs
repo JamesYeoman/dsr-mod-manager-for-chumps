@@ -4,6 +4,7 @@
 )]
 
 mod commands;
+mod mocks;
 mod types;
 mod utils;
 
