@@ -1,9 +1,32 @@
 use crate::mocks;
 use crate::types::{self, CommandError, ModData, PathSetting};
 use crate::utils::{pathbuf_to_string, use_mutex, use_mutex_ret};
+use std::sync::mpsc::Receiver;
+use std::sync::Mutex;
 use std::{path::PathBuf, sync::mpsc::channel};
 use tauri::{api::dialog::FileDialogBuilder, command};
 use types::{AppState, Response};
+
+fn handle_folder(r: Receiver<PathBuf>, p: &Mutex<PathSetting>) -> Response<String> {
+  let maybe_received = r.recv();
+  if maybe_received.is_err() {
+    return Err(CommandError::raw_new("No folder selected"));
+  }
+
+  let foo = maybe_received.unwrap();
+  let maybe_str = pathbuf_to_string(foo);
+  if maybe_str.is_none() {
+    return Err(CommandError::raw_new("Invalid folder path"));
+  }
+
+  let selection_str = maybe_str.unwrap();
+
+  use_mutex(p, |loc| {
+    (*loc).new = selection_str.clone();
+  });
+
+  Ok(selection_str)
+}
 
 fn get_latest_setting(s: PathSetting) -> Option<String> {
   if !s.new.is_empty() {
@@ -59,24 +82,7 @@ pub async fn request_game_location(state: AppState<'_>) -> Response<String> {
     }
   });
 
-  let maybe_received = receiver.recv();
-  if maybe_received.is_err() {
-    return Err(CommandError::raw_new("No folder selected"));
-  }
-
-  let foo = maybe_received.unwrap();
-  let maybe_str = pathbuf_to_string(foo);
-  if maybe_str.is_none() {
-    return Err(CommandError::raw_new("Invalid folder path"));
-  }
-
-  let selection_str = maybe_str.unwrap();
-
-  use_mutex(&(state.game_location), |loc| {
-    (*loc).new = selection_str.clone();
-  });
-
-  Ok(selection_str)
+  handle_folder(receiver, &(state.game_location))
 }
 
 #[command]
