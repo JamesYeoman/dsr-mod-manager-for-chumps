@@ -1,6 +1,6 @@
 use crate::mocks;
 use crate::types::{self, CommandError, ModData, PathSetting};
-use crate::utils::{pathbuf_to_result, use_mutex, use_mutex_ret};
+use crate::utils::{option_to_result, pathbuf_to_string, use_mutex, use_mutex_ret};
 use std::sync::mpsc::Receiver;
 use std::sync::Mutex;
 use std::{path::PathBuf, sync::mpsc::channel};
@@ -8,13 +8,10 @@ use tauri::{api::dialog::FileDialogBuilder, command};
 use types::{AppState, Response};
 
 fn handle_folder(r: Receiver<PathBuf>, p: &Mutex<PathSetting>) -> Response<String> {
-  let maybe_received = r
-    .recv()
-    .map_err(|_| CommandError::raw_new("No folder selected"));
-
-  maybe_received
-    .map(pathbuf_to_result)
-    .and_then(|v| v) // Unnest
+  r.recv()
+    .map_err(|_| dsrbmm_cmd_err_raw!("No folder selected"))
+    .map(pathbuf_to_string)
+    .and_then(option_to_result(dsrbmm_cmd_err_raw!("Invalid folder path")))
     .and_then(|selection_str| {
       use_mutex(p, |loc| {
         (*loc).new = selection_str.clone();
@@ -27,10 +24,10 @@ fn handle_folder(r: Receiver<PathBuf>, p: &Mutex<PathSetting>) -> Response<Strin
 fn get_latest_setting(s: PathSetting) -> Option<String> {
   if !s.new.is_empty() {
     return Some(s.new.clone());
-  } else {
-    if !s.current.is_empty() {
-      return Some(s.current.clone());
-    }
+  }
+
+  if !s.current.is_empty() {
+    return Some(s.current.clone());
   }
 
   None
@@ -46,11 +43,8 @@ pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {
 
   let mod_list = state.mod_list.clone();
   if mod_list.is_empty() {
-    let err = CommandError::new(format!(
-      "No mods found in {}",
-      location.current.clone().as_str()
-    ));
-    return Err(err.clone());
+    let err_msg = format!("No mods found in {}", location.current.clone().as_str());
+    return Err(CommandError::new(err_msg.clone()));
   }
 
   Ok(mod_list)

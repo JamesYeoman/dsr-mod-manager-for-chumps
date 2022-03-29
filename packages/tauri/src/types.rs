@@ -13,12 +13,6 @@ impl CommandError {
       message: message.clone(),
     }
   }
-
-  pub fn raw_new(message: &str) -> Self {
-    Self {
-      message: message.to_string(),
-    }
-  }
 }
 
 impl std::fmt::Display for CommandError {
@@ -33,12 +27,6 @@ impl std::error::Error for CommandError {}
 pub struct PathSetting {
   pub current: String,
   pub new: String,
-}
-
-impl PathSetting {
-  pub fn set_new(&mut self, s: String) {
-    self.new = s.to_string();
-  }
 }
 
 #[derive(Debug, Default)]

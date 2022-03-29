@@ -1,4 +1,4 @@
-use crate::types::{CommandError, MaybeString, Response};
+use crate::types::{CommandError, MaybeString};
 use std::path::PathBuf;
 use std::sync::{Mutex, MutexGuard};
 
@@ -6,12 +6,10 @@ pub fn pathbuf_to_string(pathbuf: PathBuf) -> MaybeString {
   pathbuf.to_str().map(|st| String::from(st))
 }
 
-pub fn pathbuf_to_result(pathbuf: PathBuf) -> Response<String> {
-  let maybe_str = pathbuf.to_str();
+pub type ResultGenerator<T> = Box<dyn Fn(Option<T>) -> Result<T, CommandError>>;
 
-  maybe_str
-    .ok_or(CommandError::raw_new("Invalid folder path"))
-    .map(String::from)
+pub fn option_to_result<T>(err: CommandError) -> ResultGenerator<T> {
+  Box::new(move |param: Option<T>| param.ok_or(err.clone()))
 }
 
 pub fn use_mutex<T, F>(mutx: &Mutex<T>, f: F)

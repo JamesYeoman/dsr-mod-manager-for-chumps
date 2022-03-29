@@ -3,6 +3,9 @@
   windows_subsystem = "windows"
 )]
 
+#[macro_use]
+mod macros;
+
 mod commands;
 mod mocks;
 mod types;
