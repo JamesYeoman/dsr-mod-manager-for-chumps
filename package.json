@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "packageManager": "yarn@3.1.1",
+  "packageManager": "yarn@3.2.0",
   "scripts": {
     "frontend": "yarn workspace @dsrbmm/frontend run",
     "sb": "yarn workspace @dsrbmm/storybook run",
