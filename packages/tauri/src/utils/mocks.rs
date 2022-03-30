@@ -1,4 +1,4 @@
-use crate::types::{FileInfo, ModData};
+use crate::utils::types::{FileInfo, ModData};
 
 pub fn mod_list() -> Vec<ModData> {
   vec![

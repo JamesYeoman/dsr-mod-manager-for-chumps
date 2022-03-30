@@ -73,3 +73,4 @@ impl FileInfo {
 pub type MaybeString = Option<String>;
 pub type AppState<'a> = State<'a, TauriState>;
 pub type Response<T> = Result<T, CommandError>;
+pub type ResultGenerator<T> = Box<dyn Fn(Option<T>) -> Result<T, CommandError>>;
