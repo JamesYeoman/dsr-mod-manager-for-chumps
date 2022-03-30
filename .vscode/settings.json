@@ -25,6 +25,7 @@
   "rust-analyzer.hover.documentation": true,
   "rust-analyzer.linkedProjects": ["packages/tauri/Cargo.toml"],
   "rust-analyzer.hoverActions.debug": false,
+  "rust-analyzer.rustfmt.extraArgs": ["+nightly"],
   "scss.validate": false,
   "typescript.format.enable": false,
   "typescript.implementationsCodeLens.enabled": true,

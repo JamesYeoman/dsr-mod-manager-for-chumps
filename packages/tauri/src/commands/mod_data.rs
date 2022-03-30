@@ -1,9 +1,8 @@
-use crate::utils::mocks;
-use crate::utils::mutex::use_mutex_ret;
-use crate::utils::types;
-
 use tauri::command;
 use types::{AppState, CommandError, FileInfo, ModData, Response};
+
+use crate::utils::mutex::use_mutex_ret;
+use crate::utils::{mocks, types};
 
 #[command]
 pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {

@@ -1,5 +1,6 @@
-use serde::Serialize;
 use std::sync::Mutex;
+
+use serde::Serialize;
 use tauri::State;
 
 #[derive(Debug, Clone, Serialize)]

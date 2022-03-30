@@ -1,6 +1,6 @@
-use crate::utils::types::{CommandError, MaybeString, ResultGenerator};
-
 use std::path::PathBuf;
+
+use crate::utils::types::{CommandError, MaybeString, ResultGenerator};
 
 pub fn pathbuf_to_string(pathbuf: PathBuf) -> MaybeString {
   pathbuf.to_str().map(|st| String::from(st))

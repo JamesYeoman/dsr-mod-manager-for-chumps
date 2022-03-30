@@ -1,7 +1,7 @@
+use tauri::command;
+
 use crate::utils::mutex::use_mutex;
 use crate::utils::types::AppState;
-
-use tauri::command;
 
 #[command]
 pub fn save_settings(state: AppState<'_>) {

@@ -1,10 +1,13 @@
+use std::path::PathBuf;
+use std::sync::mpsc::{channel, Receiver};
+use std::sync::Mutex;
+
+use tauri::api::dialog::FileDialogBuilder;
+use tauri::command;
+
 use crate::utils::funcs::{option_to_result, pathbuf_to_string};
 use crate::utils::mutex::{use_mutex, use_mutex_ret};
 use crate::utils::types::{AppState, CommandError, PathSetting, Response};
-
-use std::sync::mpsc::{channel, Receiver};
-use std::{path::PathBuf, sync::Mutex};
-use tauri::{api::dialog::FileDialogBuilder, command};
 
 fn handle_folder(r: Receiver<PathBuf>, p: &Mutex<PathSetting>) -> Response<String> {
   r.recv()
