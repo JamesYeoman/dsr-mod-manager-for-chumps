@@ -51,6 +51,25 @@ impl ModData {
   }
 }
 
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct FileInfo {
+  pub path: String,
+  pub filename: String,
+  /*
+    Future properties will include file metadata such as
+    the archive the file is from, and file size
+  */
+}
+
+impl FileInfo {
+  pub fn new(path: &str, filename: &str) -> FileInfo {
+    FileInfo {
+      path: path.to_string(),
+      filename: filename.to_string(),
+    }
+  }
+}
+
 pub type MaybeString = Option<String>;
 pub type AppState<'a> = State<'a, TauriState>;
 pub type Response<T> = Result<T, CommandError>;

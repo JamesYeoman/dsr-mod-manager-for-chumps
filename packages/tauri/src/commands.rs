@@ -1,5 +1,5 @@
 use crate::mocks;
-use crate::types::{self, CommandError, ModData, PathSetting};
+use crate::types::{self, CommandError, FileInfo, ModData, PathSetting};
 use crate::utils::{option_to_result, pathbuf_to_string, use_mutex, use_mutex_ret};
 use std::sync::mpsc::Receiver;
 use std::sync::Mutex;
@@ -93,4 +93,10 @@ pub fn discard_settings(state: AppState<'_>) {
     (*guard).new = String::new();
     println!("Discarded the game_location setting");
   });
+}
+
+#[command]
+pub async fn get_file_list(argument: String) -> Response<Vec<FileInfo>> {
+  // Until the actual filesystem code is integrated, this will always return mock data
+  Ok(mocks::file_info(argument.as_str()))
 }

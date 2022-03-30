@@ -48,15 +48,15 @@ export const fileData: { [id: string]: TreeNodeInArray[] } = {
                   label: 'taeNew',
                   nodes: [
                     {
-                      key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64',
+                      key: 'better_rolling-0.2.0/Model/chr/c0000/taeNew/x64',
                       label: 'x64',
                       nodes: [
                         {
-                          key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64/a00.tae',
+                          key: 'better_rolling-0.2.0/Model/chr/c0000/taeNew/x64/a00.tae',
                           label: 'a00.tae',
                         },
                         {
-                          key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64/a01.tae',
+                          key: 'better_rolling-0.2.0/Model/chr/c0000/taeNew/x64/a01.tae',
                           label: 'a01.tae',
                         },
                       ],
