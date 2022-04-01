@@ -1,5 +1,4 @@
 import React from 'react';
-import './acceptReject.css';
 
 export interface AcceptRejectProps {
   onAccept: () => void;
@@ -8,7 +7,7 @@ export interface AcceptRejectProps {
 
 const AcceptReject = ({ onAccept, onReject }: AcceptRejectProps) => {
   return (
-    <div className="modal-action">
+    <div className="modal__action">
       <button className="btn-accept" onClick={onAccept}>
         Save
       </button>

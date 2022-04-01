@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './modalTitle.css';
-
 export interface ModalTitleProps {
   value?: string;
 }

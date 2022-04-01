@@ -35,31 +35,29 @@ const App = () => {
   //? I don't understand how, but it made the cards in the itemlist stop shrinking to all fit in the
   //? itemlist, and instead properly overflow
   return (
-    <div className="relative h-screen">
-      <div className="grid grid-cols-2 grid-rows-1 grid-flow-col gap-2 m-2 absolute top-0 left-0 right-0 bottom-0">
-        <DragDropContext onDragEnd={(dropResult) => dispatch(handleDropCard(dropResult))}>
-          <Droppable droppableId="modList">
-            {(provided, snapshot) => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                className={classNames(
-                  'soft-corners bg-base-200 flex-vert justify-start h-full min-h-max overflow-y-auto',
-                  {
-                    'outline outline-2 outline-accent': snapshot.isDraggingOver,
-                  },
-                )}
-              >
-                <ModList />
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <div className="flex-vert gap-2">
-          <InfoPane />
-          <ActionButtons />
-        </div>
+    <div className="root__grid">
+      <DragDropContext onDragEnd={(dropResult) => dispatch(handleDropCard(dropResult))}>
+        <Droppable droppableId="modList">
+          {(provided, snapshot) => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              className={classNames(
+                'soft-corners bg-base-200 flex-vert justify-start h-full min-h-max overflow-y-auto',
+                {
+                  'outline outline-2 outline-accent': snapshot.isDraggingOver,
+                },
+              )}
+            >
+              <ModList />
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
+      <div className="info-pane">
+        <InfoPane />
+        <ActionButtons />
       </div>
     </div>
   );

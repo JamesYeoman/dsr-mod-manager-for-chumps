@@ -1,5 +1,6 @@
-use serde::Serialize;
 use std::sync::Mutex;
+
+use serde::Serialize;
 use tauri::State;
 
 #[derive(Debug, Clone, Serialize)]
@@ -11,12 +12,6 @@ impl CommandError {
   pub fn new(message: String) -> Self {
     Self {
       message: message.clone(),
-    }
-  }
-
-  pub fn raw_new(message: &str) -> Self {
-    Self {
-      message: message.to_string(),
     }
   }
 }
@@ -33,12 +28,6 @@ impl std::error::Error for CommandError {}
 pub struct PathSetting {
   pub current: String,
   pub new: String,
-}
-
-impl PathSetting {
-  pub fn set_new(&mut self, s: String) {
-    self.new = s.to_string();
-  }
 }
 
 #[derive(Debug, Default)]
@@ -63,6 +52,26 @@ impl ModData {
   }
 }
 
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize)]
+pub struct FileInfo {
+  pub path: String,
+  pub filename: String,
+  /*
+    Future properties will include file metadata such as
+    the archive the file is from, and file size
+  */
+}
+
+impl FileInfo {
+  pub fn new(path: &str, filename: &str) -> FileInfo {
+    FileInfo {
+      path: path.to_string(),
+      filename: filename.to_string(),
+    }
+  }
+}
+
 pub type MaybeString = Option<String>;
 pub type AppState<'a> = State<'a, TauriState>;
 pub type Response<T> = Result<T, CommandError>;
+pub type ResultGenerator<T> = Box<dyn Fn(Option<T>) -> Result<T, CommandError>>;

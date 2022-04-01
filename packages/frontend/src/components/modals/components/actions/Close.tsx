@@ -1,5 +1,4 @@
 import React from 'react';
-import './close.css';
 
 export interface CloseProps {
   onClose: () => void;

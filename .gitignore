@@ -8,6 +8,7 @@ node_modules/
 pids/
 out/
 target/
+coverage/
 
 # Dotfolders
 .history/

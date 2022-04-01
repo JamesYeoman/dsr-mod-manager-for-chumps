@@ -20,6 +20,7 @@ module.exports = {
     'tailwindcss.js',
     'tailwind.config.js',
     'vite.config.ts',
+    'vitest.config.ts',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {

@@ -1,7 +1,0 @@
-div.modCard {
-  @apply soft-corners bg-base-100 m-1 h-10 shrink-0 leading-10 outline-none select-none card-text;
-}
-
-div.selected {
-  @apply outline-accent-focus text-white;
-}

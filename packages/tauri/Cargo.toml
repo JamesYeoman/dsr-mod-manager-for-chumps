@@ -8,16 +8,16 @@ rust-version = "1.59"
 default-run = "dsrbmm"
 
 [build-dependencies]
-tauri-build = { version = "1.0.0-rc.3" }
+tauri-build = { version = "1.0.0-rc.4", features = [] }
 
 [dependencies]
 serde_json = "1"
 serde = { version = "1", features = ["derive"] }
-tauri = { version = "1.0.0-rc.3", features = ["dialog-all", "fs-all"] }
+tauri = { version = "1.0.0-rc.4", features = ["dialog-all", "fs-all"] }
 
 [features]
-default = [ "custom-protocol" ]
-custom-protocol = [ "tauri/custom-protocol" ]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
 
 [profile.dev]
 incremental = true
@@ -26,20 +26,20 @@ lto = false
 opt-level = 0
 
 [profile.dev.package."*"]
-opt-level = 0
 incremental = true
 
 [profile.dev.build-override]
-opt-level = 0
 incremental = true
 
 [profile.release]
-panic = "abort"    # Strip expensive panic clean-up logic
-lto = "thin"       # Enables link time optimizations
-opt-level = "s"    # Optimize for binary size
-strip = true       # Strips symbol information from the executable
-incremental = true # Ensure incremental building in enabled for the release profile
+panic = "abort"     # Strip expensive panic clean-up logic
+lto = "thin"        # Enables link time optimizations
+opt-level = 2       # Optimize for binary size
+strip = "debuginfo"
+incremental = true  # Ensure incremental building in enabled for the release profile
 
 [profile.release.package."*"]
-opt-level = 0
+incremental = true
+
+[profile.release.build-override]
 incremental = true

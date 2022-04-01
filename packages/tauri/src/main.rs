@@ -3,14 +3,20 @@
   windows_subsystem = "windows"
 )]
 
+#[macro_use]
+mod macros;
+
 mod commands;
-mod types;
 mod utils;
 
-use crate::commands::{discard_settings, get_mod_list, request_game_location, save_settings};
 use std::sync::Mutex;
+
 use tauri::{generate_context, generate_handler};
-use types::TauriState;
+
+use crate::commands::dialogs::request_game_location;
+use crate::commands::mod_data::{get_file_list, get_mod_list};
+use crate::commands::settings::{discard_settings, save_settings};
+use crate::utils::types::TauriState;
 
 fn main() {
   //todo: create persistence for settings
@@ -21,10 +27,11 @@ fn main() {
       mods_location: Mutex::default(),
     })
     .invoke_handler(generate_handler![
+      discard_settings,
+      get_file_list,
       get_mod_list,
       request_game_location,
       save_settings,
-      discard_settings
     ])
     .run(generate_context!())
     .expect("error while running tauri application");

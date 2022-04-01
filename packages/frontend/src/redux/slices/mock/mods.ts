@@ -1,6 +1,4 @@
-import { TreeNodeInArray } from 'react-simple-tree-menu';
-
-import { ModInfo } from '../../../utils/interfaces';
+import type { ModFileData, ModInfo } from '../../../utils/interfaces';
 
 export const mockModsList: ModInfo[] = [
   // ID: `${mod.meta.name.toLower().replace(' ', '_')-${mod.meta.version}}`
@@ -11,156 +9,51 @@ export const mockModsList: ModInfo[] = [
   { content: 'This is a forth dummy mod', id: 'mod-3' },
 ];
 
-export const fileData: { [id: string]: TreeNodeInArray[] } = {
+export const fileData: { [id: string]: ModFileData[] } = {
   ['better_rolling-0.2.0']: [
-    {
-      key: 'better_rolling-0.2.0/Model',
-      label: 'Model',
-      nodes: [
-        {
-          key: 'better_rolling-0.2.0/Model/chr',
-          label: 'chr',
-          nodes: [
-            {
-              key: 'better_rolling-0.2.0/Model/chr/c0000',
-              label: 'c0000',
-              nodes: [
-                {
-                  key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64',
-                  label: 'hkxx64',
-                  nodes: [
-                    {
-                      key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/mock_file_01.hkx',
-                      label: 'mock_file_01.hkx',
-                    },
-                    {
-                      key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/mock_file_02.hkx',
-                      label: 'mock_file_02.hkx',
-                    },
-                    {
-                      key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/mock_file_03.hkx',
-                      label: 'mock_file_03.hkx',
-                    },
-                  ],
-                },
-                {
-                  key: 'better_rolling-0.2.0/Model/chr/c0000/taeNew',
-                  label: 'taeNew',
-                  nodes: [
-                    {
-                      key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64',
-                      label: 'x64',
-                      nodes: [
-                        {
-                          key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64/a00.tae',
-                          label: 'a00.tae',
-                        },
-                        {
-                          key: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64/x64/a01.tae',
-                          label: 'a01.tae',
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_01.hkx' },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_02.hkx' },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_03.hkx' },
+    { path: 'Model/chr/c0000/taeNew/x64', filename: 'a00.tae' },
+    { path: 'Model/chr/c0000/taeNew/x64', filename: 'a01.tae' },
   ],
   ['mod-0']: [
-    {
-      key: 'mod-0/foo',
-      label: 'foo',
-      nodes: [
-        { key: 'mod-0/foo/bar', label: 'bar' },
-        { key: 'mod-0/foo/baz', label: 'baz' },
-      ],
-    },
+    { path: 'foo', filename: 'bar' },
+    { path: 'foo', filename: 'baz' },
   ],
   ['mod-1']: [
-    {
-      key: 'mod-1/a',
-      label: 'a',
-      nodes: [
-        { key: 'mod-1/a/b', label: 'b', nodes: [{ key: 'mod-1/a/b/c', label: 'c' }] },
-        {
-          key: 'mod-1/a/ab',
-          label: 'ab',
-          nodes: [{ key: 'mod-1/a/ab/abc', label: 'abc' }],
-        },
-      ],
-    },
+    { path: 'a/b', filename: 'c' },
+    { path: 'a/ab', filename: 'abc' },
   ],
   ['mod-2']: [
-    {
-      key: 'mod-2/I',
-      label: 'I',
-      nodes: [
-        {
-          key: 'mod-2/I/like',
-          label: 'like',
-          nodes: [
-            { key: 'mod-2/I/like/Pizza', label: 'Pizza' },
-            { key: 'mod-2/I/like/Fish+Chips', label: 'Fish+Chips' },
-            { key: 'mod-2/I/like/Chocolate', label: 'Chocolate' },
-          ],
-        },
-      ],
-    },
+    { path: 'I/like', filename: 'Pizza' },
+    { path: 'I/like', filename: 'Fish and Chips' },
+    { path: 'I/like', filename: 'Chocolate' },
   ],
+  // Useful for checking overflow behaviour
   ['mod-3']: [
-    {
-      key: 'mod-3/a',
-      label: 'a',
-      nodes: [
-        {
-          key: 'mod-3/a/a0',
-          label: 'a',
-          nodes: [
-            {
-              key: 'mod-3/a/a0/a0',
-              label: 'a',
-              nodes: [
-                { key: 'mod-3/a/a0/a0/a0', label: 'a' },
-                { key: 'mod-3/a/a0/a0/a1', label: 'a' },
-              ],
-            },
-            {
-              key: 'mod-3/a/a0/a1',
-              label: 'a',
-              nodes: [
-                { key: 'mod-3/a/a0/a1/a0', label: 'a' },
-                { key: 'mod-3/a/a0/a1/a1', label: 'a' },
-              ],
-            },
-          ],
-        },
-        {
-          key: 'mod-3/a/a1',
-          label: 'a',
-          nodes: [
-            {
-              key: 'mod-3/a/a1/a0',
-              label: 'a',
-              nodes: [
-                { key: 'mod-3/a/a1/a0/a0', label: 'a' },
-                { key: 'mod-3/a/a1/a0/a1', label: 'a' },
-              ],
-            },
-            {
-              key: 'mod-3/a/a1/a1',
-              label: 'a',
-              nodes: [
-                { key: 'mod-3/a/a1/a1/a0', label: 'a' },
-                { key: 'mod-3/a/a1/a1/a1', label: 'a' },
-              ],
-            },
-          ],
-        },
-      ],
-    },
+    { path: 'a/a/a/a/a', filename: 'a' },
+    { path: 'a/a/a/a/b', filename: 'b' },
+
+    { path: 'a/a/a/b/a', filename: 'a' },
+    { path: 'a/a/a/b/b', filename: 'b' },
+
+    { path: 'a/a/b/a/a', filename: 'a' },
+    { path: 'a/a/b/a/b', filename: 'b' },
+
+    { path: 'a/a/b/b/a', filename: 'a' },
+    { path: 'a/a/b/b/b', filename: 'b' },
+
+    { path: 'b/a/a/a/a', filename: 'a' },
+    { path: 'b/a/a/a/b', filename: 'b' },
+
+    { path: 'b/a/a/b/a', filename: 'a' },
+    { path: 'b/a/a/b/b', filename: 'b' },
+
+    { path: 'b/a/b/a/a', filename: 'a' },
+    { path: 'b/a/b/a/b', filename: 'b' },
+
+    { path: 'b/a/b/b/a', filename: 'a' },
+    { path: 'b/a/b/b/b', filename: 'b' },
   ],
 };
