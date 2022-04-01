@@ -3,7 +3,10 @@
   "compilerOptions": {
     "composite": true,
     "rootDir": "src",
-    "tsBuildInfoFile": "build/no_emit.tsbuildinfo"
+    "tsBuildInfoFile": "build/no_emit.tsbuildinfo",
+    "types": [
+      "vitest/importMeta",
+    ]
   },
   "include": ["src"],
   "references": []

@@ -22,7 +22,7 @@ pub fn get_mod_list(state: AppState<'_>) -> Response<Vec<ModData>> {
 }
 
 #[command]
-pub async fn get_file_list(argument: String) -> Response<Vec<FileInfo>> {
+pub async fn get_file_list(id: String) -> Response<Vec<FileInfo>> {
   // Until the actual filesystem code is integrated, this will always return mock data
-  Ok(mocks::file_info(argument.as_str()))
+  Ok(mocks::file_info(id.as_str()))
 }

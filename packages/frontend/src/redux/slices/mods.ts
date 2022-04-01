@@ -2,12 +2,13 @@ import type { AsyncThunkCfg, ErrorObj, ModFileData } from '../../utils/interface
 import type { ModInfo, ModsSliceState } from '../../utils/interfaces';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { DropResult } from 'react-beautiful-dnd';
+import type { TreeNodeInArray } from 'react-simple-tree-menu';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { invoke } from '@tauri-apps/api/tauri';
-import { TreeNodeInArray } from 'react-simple-tree-menu';
 
 import { isTauriContext, wrapTauriErr } from '../../utils/tauri';
+import { unflattenFileData } from '../../utils/treeData';
 import { reorder } from '../../utils/util';
 import * as mocks from './mock/mods';
 
@@ -68,28 +69,29 @@ export const refreshModList = createAsyncThunk<void, void, AsyncThunkCfg>(
   },
 );
 
+const getFileData = async (id: string | undefined) => {
+  if (!id) {
+    return [{ path: 'root', filename: 'No mod is selected' }];
+  }
+
+  if (isTauriContext) {
+    return await invoke<ModFileData[]>('get_file_list', { id });
+  }
+
+  if (Object.keys(mocks.fileData).some((key) => key === id)) {
+    return mocks.fileData[id];
+  } else {
+    return [{ path: 'root', filename: `No mock data was found for ${id}` }];
+  }
+};
+
 const getFileList = createAsyncThunk<void, void, AsyncThunkCfg>(
   'mods/_getFileList',
   async (_unused, { dispatch, getState }) => {
     const { selected: id } = getState().mods;
-    const fn = (str: string) => [{ key: 'root', label: str }];
-    if (!id) {
-      dispatch(setFileInfo(fn('No mod is selected')));
-      return;
-    }
-
-    if (!isTauriContext) {
-      if (Object.keys(mocks.fileData).some((key) => key === id)) {
-        const data = mocks.fileData[id];
-        dispatch(setFileInfo(data));
-      } else {
-        dispatch(setFileInfo(fn('No mock data was found for ' + id)));
-      }
-
-      return;
-    }
-
-    dispatch(setFileInfo(fn('Obtaining file list from tauri is not implemented')));
+    const data: ModFileData[] = await getFileData(id);
+    const unflattened = unflattenFileData(data, id ? id : 'root');
+    dispatch(setFileInfo(unflattened));
   },
 );
 

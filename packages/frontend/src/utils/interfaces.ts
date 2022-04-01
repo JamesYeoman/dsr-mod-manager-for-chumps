@@ -9,8 +9,8 @@ export interface ModInfo {
 }
 
 export interface ModFileData {
-  name: string;
-  children?: ModFileData[];
+  path: string;
+  filename: string;
 }
 
 export interface ModsSliceState {

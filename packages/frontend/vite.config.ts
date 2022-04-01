@@ -1,3 +1,7 @@
+// The below references are required for vitest
+/// <reference types="vitest" />
+/// <reference types="vitest/globals" />
+
 import { resolve } from 'path';
 
 import type { ConfigEnv } from 'vite';
@@ -18,9 +22,16 @@ function maybeCloseStdin(configEnv: ConfigEnv) {
 export default defineConfig((configEnv) => {
   const devMode = configEnv.mode === 'development';
   // May not be needed anymore
-  // maybeCloseStdin(configEnv);
+  maybeCloseStdin(configEnv);
   return {
     base: 'GH_PAGES_BUILD' in process.env ? '/dsrbmm/' : undefined,
+    // Let dead code elimination get rid of tests in the production build
+    define: {
+      'import.meta.vitest': 'undefined',
+    },
+    test: {
+      includeSource: ['src/**/*.ts'],
+    },
     plugins: [react()],
     build: {
       // Move dist out of frontend folder
