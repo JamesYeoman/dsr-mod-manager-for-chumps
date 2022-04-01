@@ -7,7 +7,6 @@ import { Draggable } from 'react-beautiful-dnd';
 import { selectMod } from '../redux/slices/mods';
 import { useAppDispatch, useAppSelector } from '../utils/hooks';
 import { getStyle } from '../utils/util';
-import './ModList.css';
 
 const toProps = ({ innerRef, draggableProps, dragHandleProps }: DraggableProvided) => {
   return { ref: innerRef, ...draggableProps, ...dragHandleProps };

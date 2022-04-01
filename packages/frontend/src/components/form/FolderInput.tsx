@@ -1,7 +1,6 @@
 import React from 'react';
 
 import FolderIcon from '../icons/Folder';
-import './folderInput.css';
 
 interface Props {
   label: string;
@@ -12,9 +11,9 @@ interface Props {
 const FolderInput = ({ label, value, onBrowse }: Props) => {
   return (
     <div className="input-container">
-      <div className="cell-card input-label">{label}</div>
-      <div className="cell-card input-value">{value}</div>
-      <button className="browse-button" onClick={onBrowse}>
+      <div className="input-container__label cell-card">{label}</div>
+      <div className="input-container__value cell-card">{value}</div>
+      <button className="input-container__browse" onClick={onBrowse}>
         <FolderIcon />
       </button>
     </div>

@@ -3,8 +3,6 @@ import React from 'react';
 import { useAppSelector } from '../../utils/hooks';
 import TreeView from '../TreeView';
 
-import './filesTab.css';
-
 const FilesTab = () => {
   const fileInfo = useAppSelector((state) => state.mods.fileList);
 

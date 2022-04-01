@@ -7,7 +7,6 @@ import React from 'react';
 
 import AcceptReject from './actions/AcceptReject';
 import Close from './actions/Close';
-import './baseModal.css';
 
 export interface BaseModalProps {
   isOpen: boolean;
@@ -31,7 +30,7 @@ const ModalActions = ({ actionProps }: ModalActionsProps) => {
 const BaseModal = ({ children, isOpen, title, actionProps }: BaseModalProps) => {
   return (
     <div className={cx('modal', { 'modal-open': isOpen })}>
-      <div className="modal-content">
+      <div className="modal__content">
         <div>
           <h1 className="modal-title">{title}</h1>
           <div className="divider" />

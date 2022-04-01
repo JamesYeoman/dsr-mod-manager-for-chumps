@@ -1,9 +1,8 @@
-import cx from 'classnames';
-import React, { ReactNode, useCallback, useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type { ReactNode } from 'react';
+
+import React, { useCallback, useState } from 'react';
 import { match, __ } from 'ts-pattern';
 
-import './InfoPane.css';
 import FilesTab from './info_pane/FilesTab';
 
 const tabsObj = {
@@ -30,15 +29,19 @@ export default function InfoPane() {
     [selectedTab],
   );
 
+  const tabProps = useCallback(
+    (value: TabsType) => ({
+      onClick: () => tabClickHandler(value),
+      className: selectedTab === value ? 'tab-active' : undefined,
+    }),
+    [tabClickHandler, selectedTab],
+  );
+
   return (
     <div className="mod-info">
-      <div className="tabs-container">
+      <div className="mod-info__tabs-container">
         {tabsKeys.map((value) => (
-          <div
-            key={'tab-' + value}
-            onClick={() => tabClickHandler(value)}
-            className={cx({ 'tab-active': selectedTab === value })}
-          >
+          <div key={'tab-' + value} {...tabProps(value)}>
             {tabsObj[value]}
           </div>
         ))}

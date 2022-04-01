@@ -12,11 +12,13 @@ const dummyHandler = (name: string) => () => {
 const ActionButtons = () => {
   const dispatch = useAppDispatch();
   return (
-    <div className="bg-base-300 grow-0 shrink-0 min-h-max grid grid-flow-row grid-cols-4 gap-2">
-      <SettingsModal />
-      <PrimaryButton text="refresh" onClickHandler={() => dispatch(refreshModList())} />
-      <PrimaryButton text="inject" onClickHandler={dummyHandler('Inject')} />
-      <PrimaryButton text="play" onClickHandler={dummyHandler('Play')} />
+    <div className="action-buttons__container">
+      <div className="action-buttons__grid">
+        <SettingsModal />
+        <PrimaryButton text="refresh" onClickHandler={() => dispatch(refreshModList())} />
+        <PrimaryButton text="inject" onClickHandler={dummyHandler('Inject')} />
+        <PrimaryButton text="play" onClickHandler={dummyHandler('Play')} />
+      </div>
     </div>
   );
 };

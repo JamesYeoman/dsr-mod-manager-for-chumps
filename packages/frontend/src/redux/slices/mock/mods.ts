@@ -11,24 +11,24 @@ export const mockModsList: ModInfo[] = [
 
 export const fileData: { [id: string]: ModFileData[] } = {
   ['better_rolling-0.2.0']: [
-    { path: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64', filename: 'mock_file_01.hkx' },
-    { path: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64', filename: 'mock_file_02.hkx' },
-    { path: 'better_rolling-0.2.0/Model/chr/c0000/hkxx64', filename: 'mock_file_03.hkx' },
-    { path: 'better_rolling-0.2.0/Model/chr/c0000/taeNew/x64', filename: 'a00.tae' },
-    { path: 'better_rolling-0.2.0/Model/chr/c0000/taeNew/x64', filename: 'a01.tae' },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_01.hkx' },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_02.hkx' },
+    { path: 'Model/chr/c0000/hkxx64', filename: 'mock_file_03.hkx' },
+    { path: 'Model/chr/c0000/taeNew/x64', filename: 'a00.tae' },
+    { path: 'Model/chr/c0000/taeNew/x64', filename: 'a01.tae' },
   ],
   ['mod-0']: [
-    { path: 'mod-0/foo', filename: 'bar' },
-    { path: 'mod-0/foo', filename: 'baz' },
+    { path: 'foo', filename: 'bar' },
+    { path: 'foo', filename: 'baz' },
   ],
   ['mod-1']: [
-    { path: 'mod-1/a/b', filename: 'c' },
-    { path: 'mod-1/a/ab', filename: 'abc' },
+    { path: 'a/b', filename: 'c' },
+    { path: 'a/ab', filename: 'abc' },
   ],
   ['mod-2']: [
-    { path: 'mod-2/I/like/Pizza', filename: 'Pizza' },
-    { path: 'mod-2/I/like/Fish+Chips', filename: 'Fish+Chips' },
-    { path: 'mod-2/I/like/Chocolate', filename: 'Chocolate' },
+    { path: 'I/like', filename: 'Pizza' },
+    { path: 'I/like', filename: 'Fish and Chips' },
+    { path: 'I/like', filename: 'Chocolate' },
   ],
   // Useful for checking overflow behaviour
   ['mod-3']: [

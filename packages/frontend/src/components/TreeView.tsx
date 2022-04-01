@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import React from 'react';
 import TreeMenu from 'react-simple-tree-menu';
 
-import './treeView.css';
 import DropdownArrow from './icons/DropdownArrow';
 
 export interface TreeNodeProps {
