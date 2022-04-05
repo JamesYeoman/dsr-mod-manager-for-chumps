@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import React, { useEffect } from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
@@ -31,28 +30,20 @@ const App = () => {
     dispatch(refreshModList());
   }, []); // onComponentMount
 
-  //? See https://stackoverflow.com/a/47377149 for an explaination of this black magic...
-  //? I don't understand how, but it made the cards in the itemlist stop shrinking to all fit in the
-  //? itemlist, and instead properly overflow
   return (
     <div className="root__grid">
       <DragDropContext onDragEnd={(dropResult) => dispatch(handleDropCard(dropResult))}>
         <Droppable droppableId="modList">
-          {(provided, snapshot) => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className={classNames(
-                'soft-corners bg-base-200 flex-vert justify-start h-full min-h-max overflow-y-auto',
-                {
-                  'outline outline-2 outline-accent': snapshot.isDraggingOver,
-                },
-              )}
-            >
-              <ModList />
-              {provided.placeholder}
-            </div>
-          )}
+          {({ droppableProps, placeholder, innerRef }, { isDraggingOver }) => {
+            const listProps = { ref: innerRef, 'data-dragging-over': isDraggingOver };
+
+            return (
+              <div className="mod-list" {...droppableProps} {...listProps}>
+                <ModList />
+                {placeholder}
+              </div>
+            );
+          }}
         </Droppable>
       </DragDropContext>
       <div className="info-pane">
