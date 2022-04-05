@@ -11,11 +11,13 @@ import { defineConfig } from 'vite';
 
 // https://github.com/vitejs/vite/issues/5743
 function maybeCloseStdin(configEnv: ConfigEnv) {
-  if (configEnv.command === 'build') return;
-  process.stdin.on('close', () => {
-    process.exit(0);
-  });
-  process.stdin.resume();
+  if (configEnv.command !== 'build') {
+    process.stdin.on('close', () => {
+      process.exit(0);
+    });
+
+    process.stdin.resume();
+  }
 }
 
 // https://vitejs.dev/config/

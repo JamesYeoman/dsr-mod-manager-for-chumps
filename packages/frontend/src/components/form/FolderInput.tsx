@@ -11,9 +11,9 @@ interface Props {
 const FolderInput = ({ label, value, onBrowse }: Props) => {
   return (
     <div className="input-container">
-      <div className="input-container__label cell-card">{label}</div>
-      <div className="input-container__value cell-card">{value}</div>
-      <button className="input-container__browse" onClick={onBrowse}>
+      <span className="label">{label}</span>
+      <span className="value">{value}</span>
+      <button className="browse" onClick={onBrowse}>
         <FolderIcon />
       </button>
     </div>

@@ -1,17 +1,13 @@
 import React from 'react';
 
-import IconBase from './Base';
-
-export interface FolderIconProps {
-  styling?: string;
-}
+import IconBase, { IconProps } from './Base';
 
 /* https://www.svgrepo.com/svg/82691/folder */
-const FolderIcon = ({ styling }: FolderIconProps) => (
-  <IconBase className={styling} x={240} y={240}>
+const FolderIcon = ({ className }: IconProps) => (
+  <IconBase className={className} x={240} y={200}>
     <desc>Click me to open up a folder picker dialog!</desc>
-    <path d="M226 76 H14 V23 h71 l8 19 h133 V76 z" />
-    <path d="M5 217 h230 L240 89 H0 L5 217 z" />
+    <polygon points="225,53 15,53 15,0 85,0 93,19 225,19" />
+    <polygon points="15,200 225,200 240,66 0,66" />
   </IconBase>
 );
 

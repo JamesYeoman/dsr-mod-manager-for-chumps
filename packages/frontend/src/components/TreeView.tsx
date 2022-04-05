@@ -1,10 +1,12 @@
+import type { ReactNode } from 'react';
 import type { Item, TreeMenuItem, TreeNodeInArray } from 'react-simple-tree-menu';
 
-import classNames from 'classnames';
 import React from 'react';
 import TreeMenu from 'react-simple-tree-menu';
+import { match } from 'ts-pattern';
 
 import DropdownArrow from './icons/DropdownArrow';
+import FileIcon from './icons/File';
 
 export interface TreeNodeProps {
   nodes: TreeNodeInArray[];
@@ -16,14 +18,15 @@ interface ToggleIconProps {
   onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-const ToggleIcon = ({ isOpen: open, hasNodes, onClick }: ToggleIconProps) => {
-  if (!hasNodes) {
-    return null;
-  }
+const ToggleIcon = ({ isOpen, hasNodes, onClick }: ToggleIconProps) => {
+  const dataProps = { 'data-toggle': hasNodes, 'data-open': isOpen };
 
   return (
-    <div className="toggle-icon" onClick={onClick}>
-      <DropdownArrow aria-label="Toggle" classname={classNames('symbol', { open })} />
+    <div {...dataProps} className="toggle-icon" onClick={onClick}>
+      {match<boolean, ReactNode>(hasNodes)
+        .with(true, () => <DropdownArrow aria-label="Toggle" className="symbol" />)
+        .with(false, () => <FileIcon className="symbol file" />)
+        .exhaustive()}
     </div>
   );
 };
@@ -33,10 +36,11 @@ const TreeItem = (props: TreeMenuItem) => {
   const { hasNodes, isOpen, label, level } = item as Item;
 
   const listProps = {
-    className: classNames(`tree-item tree-item-level${level}`, {
-      'tree-item--active': active,
-    }),
-    style: { paddingLeft: `${(hasNodes ? 0 : 3) + level * 1.75}rem` },
+    className: `tree-item`,
+    'data-active': active,
+    style: {
+      ['--node-level' as any]: level,
+    },
     onClick: (e: React.MouseEvent<HTMLLIElement>) => {
       onClick(e);
     },
@@ -58,7 +62,7 @@ const TreeItem = (props: TreeMenuItem) => {
     <li {...listProps} role="button" aria-pressed={active}>
       <ToggleIcon {...toggleIconProps} />
       <div className="tree-item-content">
-        <span onClick={(e) => e.stopPropagation()}>{label}</span>
+        <span>{label}</span>
       </div>
     </li>
   );
