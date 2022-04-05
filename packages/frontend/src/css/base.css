@@ -1,0 +1,16 @@
+@tailwind base;
+@layer base {
+  div#root {
+    /* Make the root div fill the viewport */
+    @apply relative h-screen;
+  }
+
+  .root__grid {
+    /* Make the main grid expand to fill the entire root div */
+    @apply absolute top-0 left-0 right-0 bottom-0;
+  }
+
+  svg {
+    @apply max-h-full max-w-full w-full min-w-full;
+  }
+}

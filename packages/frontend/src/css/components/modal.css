@@ -1,0 +1,59 @@
+@layer components {
+  .modal {
+    @apply bg-base-200 bg-opacity-50;
+
+    & .modal-title {
+      @apply text-center text-3xl font-bold p-2;
+    }
+
+    & .modal__action {
+      @apply modal-action;
+
+      & :is(.btn-close, .btn-reject) {
+        @apply border-none;
+      }
+    }
+
+    & div.divider {
+      &:before {
+        --tw-bg-opacity: 0.5;
+      }
+
+      &:after {
+        --tw-bg-opacity: 0.5;
+      }
+    }
+  }
+
+  .modal__content {
+    @apply modal-box max-w-[90%] lg:max-h-[90%] h-full flex flex-col justify-between bg-base-200 shadow-black shadow-2xl;
+    --bg-color: theme('colors.base-200');
+
+    & .input-container {
+      @apply grid flex-row flex-grow justify-center h-12 w-full my-1;
+      grid-template-columns: repeat(14, minmax(0, 1fr));
+
+      & :not(button) {
+        @apply px-2 bg-base-100;
+      }
+
+      & .label {
+        @apply cell-card col-span-2 col-start-2;
+      }
+
+      & .value {
+        @apply cell-card col-span-8 col-start-5 font-mono rounded-r-none;
+      }
+
+      & .browse {
+        @apply btn max-h-full h-full col-span-1 rounded-l-none ml-0.5;
+        --border-btn: 0;
+        grid-column-start: 13;
+
+        & > svg {
+          @apply fill-base-content bg-transparent p-1;
+        }
+      }
+    }
+  }
+}

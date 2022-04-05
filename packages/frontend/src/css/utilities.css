@@ -1,0 +1,11 @@
+@tailwind utilities;
+@layer utilities {
+  :root {
+    --selected-outline: theme('colors.accent-focus');
+  }
+
+  [data-selected='true'] {
+    @apply outline outline-2 text-white;
+    outline-color: var(--selected-outline);
+  }
+}
